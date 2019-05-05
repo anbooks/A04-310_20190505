@@ -1,0 +1,59 @@
+﻿@model WebApplication8.Models.DbPo
+@{
+    Layout = "_Layout_admin";
+}
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">系统管理</a>
+                </li>
+                <li><a asp-area="" asp-controller="DbPoes" asp-action="Index">权限管理</a></li>
+                <li class="active">删除权限信息</li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+
+<h3>你确定要删除这个权限吗？</h3>
+<div>
+  
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            权限
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PoName)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="PoId" />
+        <input type="submit" value="删除" class="btn btn-lg btn-danger"/> |
+        <a asp-action="Index">权限管理</a>
+    </form>
+</div>

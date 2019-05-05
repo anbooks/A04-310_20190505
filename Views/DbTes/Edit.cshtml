@@ -1,0 +1,41 @@
+﻿@model WebApplication8.Models.DbTe
+@{
+    Layout = "_Layout3";
+}
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>题目信息</h2>
+
+<h4>试卷信息</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TeId" />
+            <div class="form-group">
+                <label asp-for="EmAnswer" class="control-label"></label>
+                <input asp-for="EmAnswer" class="form-control" />
+                <span asp-validation-for="EmAnswer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaxId" class="control-label"></label>
+                <select asp-for="PaxId" class="form-control" asp-items="ViewBag.PaxId"></select>
+                <span asp-validation-for="PaxId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+  
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

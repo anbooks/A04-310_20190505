@@ -1,0 +1,109 @@
+﻿@model WebApplication8.Models.DbPax
+@{
+    Layout = "_Layout_employee";
+}
+<!DOCTYPE html>
+<html lang="zxx">
+
+
+<body>
+    <!-- banner -->
+    <div class="banner">
+        <!-- header -->
+      
+        <!-- //header -->
+        <div class="container">
+            <!-- banner-text -->
+            <div class="banner-text">
+                <form asp-action="Delete">
+                   <input type="hidden" asp-for="PaxId" />
+                   <div class="slider-info">
+                     <h3>考试成绩为: <span>@Html.Raw(ViewBag.htmlStr)  </span> 分</h3>
+                     <a  class="banner-button btn mt-md-5 mt-4" asp-controller="DbTes" asp-action="Index">错题信息</a>
+                   </div>
+               </form>
+           </div>
+        </div>
+    </div>
+    
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <!-- //js -->
+    <!-- carousel(for feedback) -->
+    <script src="js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 2,
+                        nav: false
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true,
+                        loop: false,
+                        margin: 20
+                    }
+                }
+            })
+        })
+    </script>
+
+    <!-- //carousel(for feedback) -->
+    <!-- stats -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.countup.js"></script>
+    <script>
+        $('.counter').countUp();
+    </script>
+    <!-- //stats -->
+    <!-- start-smooth-scrolling -->
+    <script src="js/move-top.js"></script>
+    <script src="js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script src="js/SmoothScroll.min.js"></script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
+
+

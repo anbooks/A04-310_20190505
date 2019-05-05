@@ -1,0 +1,108 @@
+﻿@model WebApplication8.Models.DbQu
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DbQu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Question)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionA)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OptionA)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionB)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OptionB)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OptionC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.OptionD)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OptionD)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.RightAnswer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RightAnswer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Difficulty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Difficulty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Bu)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bu.BuName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Em)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Em.Password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sua)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sua.SuaName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sub)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sub.SubName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Suc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Suc.SucName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sud)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sud.SudName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Sue)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sue.SueName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.QuId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

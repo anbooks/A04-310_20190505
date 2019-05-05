@@ -1,0 +1,129 @@
+﻿@model IEnumerable<WebApplication8.Models.Test>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "_Layout_paperadmin";
+}
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">系统管理</a>
+                </li>
+                <li><a asp-action="Index">试题模板</a></li>
+                <li class="active">添加模板</li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TestName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Time)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ShenpiFlag)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TestName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tester)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Duo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Time)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShenpiFlag)
+            </td>
+            <td>
+
+                @*<a asp-action="Details" asp-route-id="@item.TestId">Details</a> |
+            <a asp-action="Edit" asp-route-id="@item.TestId">查看</a>*@
+                @*<a asp-action="Details" asp-route-id="@item.EmId">查询</a> |*@
+                <a asp-action="Details" asp-route-id="@item.TestId" class="tooltip-info" data-rel="tooltip" title="Details">
+                    <span class="blue">
+                        <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                    </span>
+                </a>
+
+                @*<a asp-action="Edit" asp-route-id="@item.EmId">修改</a> |
+
+            <a asp-action="Delete" asp-route-id="@item.EmId">删除</a>*@
+
+
+                <a asp-action="Edit" asp-route-id="@item.TestId" class="tooltip-success" data-rel="tooltip" title="Edit">
+                    <span class="green">
+                        <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                    </span>
+                </a>
+
+
+
+                <a asp-action="Delete" asp-route-id="@item.TestId" class="tooltip-error" data-rel="tooltip" title="Delete">
+                    <span class="red">
+                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                    </span>
+                </a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-action="Create">增加出题模板</a>
+</p>

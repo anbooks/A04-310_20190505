@@ -1,0 +1,91 @@
+﻿@model IEnumerable<WebApplication8.Models.DbTick>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "_Layout_paperadmin";
+}
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">试题管理</a>
+                </li>
+                <li class="active">试题反馈</li>
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+<p>
+
+    <a asp-action="Create" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5"><i class="ti-plus"></i>查看处理记录</a>
+
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticking)
+            </th>
+            <th>
+                题目
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Handle)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.EmName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ticking)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qu.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Handle)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmName)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.QuId" class="tooltip-success" data-rel="tooltip" title="Edit">
+                        <span class="green">
+                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                        </span>
+                    </a>
+                    @*<a asp-action="Edit" asp-route-id="@item.QuId" asp-route-ida="@item.TickId">编辑</a>*@
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

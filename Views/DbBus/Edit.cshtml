@@ -1,0 +1,65 @@
+﻿@model WebApplication8.Models.DbBu
+@{
+    Layout = "_Layout_admin";
+}
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">系统管理</a>
+                </li>
+                <li><a asp-area="" asp-controller="DbBus" asp-action="Index">岗位管理</a></li>
+                <li class="active">编辑岗位信息</li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="BuId" />
+            <div class="form-group">
+                <label asp-for="BuName" class="control-label"></label>
+                <input asp-for="BuName" class="form-control" />
+                <span asp-validation-for="BuName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-lg btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">职位管理</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

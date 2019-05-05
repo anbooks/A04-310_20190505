@@ -1,0 +1,36 @@
+﻿@model WebApplication8.Models.TestQu
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>TestQu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TestaId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TestaId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Qu)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Qu.Difficulty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Test)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Test.TestName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.TequId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

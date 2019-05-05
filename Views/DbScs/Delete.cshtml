@@ -1,0 +1,71 @@
+﻿@model List<WebApplication8.Models.DbSta>
+@{
+    Layout = "_Layout3";
+}
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>部门成绩</h2>
+
+<form method="post">
+
+    <p>
+        <select asp-items="ViewBag.memberName" name="memName" style="width:150px;height:26px">
+            <option value="">ALL</option>
+        </select>
+
+        <input type="date" name="date" />
+        <input asp-action="Edit" type="submit" value="查询" />
+    </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    姓名
+                </th>
+                <th>
+                    岗位
+                </th>
+                <th>
+                    答卷次数
+                </th>
+                <th>
+                    正确率
+                </th>
+                <th>
+                    平均分
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Em.EmName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Em.Bu.BuName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Accuracy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Average)
+                    </td>
+                    <td>
+                        <a asp-action="Create" asp-route-id="@item.EmId">详细信息</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

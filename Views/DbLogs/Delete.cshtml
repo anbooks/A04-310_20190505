@@ -1,0 +1,87 @@
+﻿@model WebApplication8.Models.DbLog
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>删除信息</h2>
+
+<h3>确认删除</h3>
+<div>
+    <h4></h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.QuId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.EmName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.EmName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlterTime)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlterTime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlQuestion)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlQuestion)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlOptionA)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlOptionA)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlOptionB)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlOptionB)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlOptionC)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlOptionC)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlOptionD)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlOptionD)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlRightAnswer)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlRightAnswer)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlDifficulty)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlDifficulty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.AlEdit)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.AlEdit)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="AlterId" />
+        <input type="submit" value="删除" class="btn btn-default" /> |
+        <a asp-action="Index">返回</a>
+    </form>
+</div>

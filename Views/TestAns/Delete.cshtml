@@ -1,0 +1,51 @@
+﻿@model WebApplication8.Models.TestAn
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>TestAn</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TeAn)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TeAn)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TestaId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TestaId)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Em)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Em.Password)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Qu)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Qu.Difficulty)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Test)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Test.TestName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TeAnId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">Back to List</a>
+    </form>
+</div>

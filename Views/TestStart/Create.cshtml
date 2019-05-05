@@ -1,0 +1,212 @@
+﻿@model WebApplication8.Models.TestAn
+
+@{
+    Layout = "_Layout_employee";
+}
+@{
+    ViewData["Title"] = "Create";
+    string answer = null;
+    if (ViewData["ans"] != null)
+    {
+        var ans = ViewData["ans"];
+        answer = ans.ToString();
+
+    }
+
+
+
+}
+
+<div class="main-content">
+<div class="main-content-inner">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="#">Home</a>
+            </li>
+
+            <li>
+                <a href="#">正式考试</a>
+            </li>
+
+            <li class="active">多选</li>
+
+        </ul><!-- /.breadcrumb -->
+
+
+    </div>
+
+
+</div><!-- /.row -->
+</div><!-- /.page-content -->
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="TeAnId" />
+            <table>
+                <tr>
+                    <td>
+                        <input type="hidden" id="num" asp-for="TestaId" />
+                        <input type="hidden" id="cou1" asp-for="Test.Dan" />
+                        <input type="hidden" id="cou2" asp-for="Test.Duo" />
+                    </td>
+
+                    <td></td>
+                </tr>
+                <tr>
+
+                    <td width="80px" valign="top">
+                        （多选)@Html.DisplayFor(modelItem => Model.TestaId) .
+
+                    </td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.Qu.Question)</td>
+                </tr>
+                @{
+                    if (answer == null)
+                    {
+
+                        <tr>
+
+                            <td style="text-align:center"><input type="checkbox" id="ch_1" Name="checkBox" value="A" /></td>
+                            <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
+                        </tr>
+                        <tr>
+
+                            <td style="text-align:center"><input type="checkbox" id="ch_2" Name="checkBox" value="B" /></td>
+                            <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
+                        </tr>
+                        <tr>
+
+                            <td style="text-align:center"><input type="checkbox" id="ch_3" Name="checkBox" value="C" /></td>
+                            <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align:center"><input type="checkbox" id="ch_4" Name="checkBox" value="D" /></td>
+                            <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
+                        </tr>
+
+                    }
+                    else
+                    {
+                        string[] a = answer.Split(",");
+
+                        if (a.Contains("A"))
+                        {
+                            <tr>
+
+                                <td style="text-align:center"><input type="checkbox" id="ch_1" Name="checkBox" value="A" checked="checked" /></td>
+                                <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+
+                                <td style="text-align:center"><input type="checkbox" id="ch_1" Name="checkBox" value="A" /></td>
+                                <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
+                            </tr>
+
+                        }
+                        if (a.Contains("B"))
+                        {
+                            <tr>
+
+                                <td style="text-align:center"><input type="checkbox" id="ch_2" Name="checkBox" value="B" checked="checked" /></td>
+                                <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
+                            </tr>
+
+                        }
+                        else
+                        {
+                            <tr>
+
+                                <td style="text-align:center"><input type="checkbox" id="ch_2" Name="checkBox" value="B" /></td>
+                                <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
+                            </tr>
+
+                        }
+                        if (a.Contains("C"))
+                        {
+                            <tr>
+
+                                <td style="text-align:center"><input type="checkbox" id="ch_3" Name="checkBox" value="C" checked="checked" /></td>
+                                <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+
+                                <td style="text-align:center"><input type="checkbox" id="ch_3" Name="checkBox" value="C" /></td>
+                                <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
+                            </tr>
+
+                        }
+                        if (a.Contains("D"))
+                        {
+                            <tr>
+                                <td style="text-align:center"><input type="checkbox" id="ch_4" Name="checkBox" value="D" checked="checked" /></td>
+                                <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
+                            </tr>
+
+                        }
+                        else
+                        {
+                            <tr>
+                                <td style="text-align:center"><input type="checkbox" id="ch_4" Name="checkBox" value="D" /></td>
+                                <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
+                            </tr>
+
+                        }
+
+
+
+                    }
+
+                }
+
+            </table>
+            <div class="form-group">
+                <input type="submit" value="上一题" class="btn btn-default" name="edit" />
+                <input type="submit" id="sub" value="下一题" class="btn btn-default" name="edit" />
+            </div>
+
+        </form>
+    </div>
+</div>
+<div>
+    <a asp-action="Details">返回题目列表</a>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+
+<script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+
+        $("#sub").click(function () {
+
+            if ($("#num").val() == (("#cou1").val() + ("#cou2").val())) {
+                if (confirm("确认提交试卷？")) {
+
+                }
+                else {
+
+                }
+
+            }
+        });
+
+    });
+</script>
+
+

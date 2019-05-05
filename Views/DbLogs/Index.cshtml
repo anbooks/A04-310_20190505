@@ -1,0 +1,90 @@
+﻿@model IEnumerable<WebApplication8.Models.DbLog>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>修改信息</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.QuId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlterTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlQuestion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlOptionA)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlOptionB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlOptionC)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlOptionD)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlRightAnswer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlDifficulty)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AlEdit)
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.QuId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlterTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlQuestion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlOptionA)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlOptionB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlOptionC)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlOptionD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlRightAnswer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlDifficulty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AlEdit)
+                </td>
+
+            </tr>
+        }
+    </tbody>
+</table>

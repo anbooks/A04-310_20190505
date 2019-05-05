@@ -1,0 +1,70 @@
+﻿@model IEnumerable<WebApplication8.Models.DbSc>
+@{
+    Layout = "_Layout2";
+}
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>个人成绩</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+
+            <th>
+                成绩
+            </th>
+            <th>
+                一级专业
+            </th>
+            <th>
+                二级专业
+            </th>
+            <th>
+                三级专业
+            </th>
+            <th>
+                考试开始时间
+            </th>
+            <th>
+                考试结束时间
+            </th>
+
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pa.Sua.SuaName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pa.Sub.SubName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pa.Suc.SucName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestEnd)
+                </td>
+
+
+                <td>
+                    <a asp-area="" asp-controller="DbExams" asp-action="Index" asp-route-id="@item.PaId">试卷信息</a>
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>

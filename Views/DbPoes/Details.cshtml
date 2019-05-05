@@ -1,0 +1,57 @@
+﻿@model WebApplication8.Models.DbPo
+@{
+    Layout = "_Layout_admin";
+}
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">系统管理</a>
+                </li>
+                <li><a asp-area="" asp-controller="DbPoes" asp-action="Index">权限管理</a></li>
+                <li class="active">权限信息详情</li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            权限
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PoName)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.PoId">修改</a> |
+    <a asp-action="Index">权限管理</a>
+</div>

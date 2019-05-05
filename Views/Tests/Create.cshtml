@@ -1,0 +1,101 @@
+﻿@model WebApplication8.Models.Test
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{
+    Layout = "_Layout_paperadmin";
+}
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">系统管理</a>
+                </li>
+                <li><a asp-action="Index">试题模板</a></li>
+                <li class="active">添加模板</li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="TestName" class="control-label"></label>
+                <input asp-for="TestName" class="form-control" />
+                <span asp-validation-for="TestName" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                <label asp-for="Tester" class="control-label"></label>
+                <input asp-for="Tester" class="form-control" />
+                <span asp-validation-for="Tester" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="Dan" class="control-label"></label>
+                <input asp-for="Dan" class="form-control" />
+                <span asp-validation-for="Dan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Duo" class="control-label"></label>
+                <input asp-for="Duo" class="form-control" />
+                <span asp-validation-for="Duo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pan" class="control-label"></label>
+                <input asp-for="Pan" class="form-control" />
+                <span asp-validation-for="Pan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Time" class="control-label"></label>
+                <input asp-for="Time" class="form-control" />
+                <span asp-validation-for="Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DanScore" class="control-label"></label>
+                <input asp-for="DanScore" class="form-control" />
+                <span asp-validation-for="DanScore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DuoScore" class="control-label"></label>
+                <input asp-for="DuoScore" class="form-control" />
+                <span asp-validation-for="DuoScore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PanScore" class="control-label"></label>
+                <input asp-for="PanScore" class="form-control" />
+                <span asp-validation-for="PanScore" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-lg btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">试题管理</a>
+</div>
+

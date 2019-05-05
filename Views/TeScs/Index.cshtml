@@ -1,0 +1,97 @@
+﻿@model IEnumerable<WebApplication8.Models.TeSc>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "_Layout_employee";
+}
+<div class="main-content-inner">
+    <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+        <ul class="breadcrumb">
+            <li>
+                <i class="ace-icon fa fa-home home-icon"></i>
+                <a href="#">Home</a>
+            </li>
+
+            <li>
+                <a href="#">正式考试</a>
+            </li>
+
+            <li class="active">考试成绩查询</li>
+
+        </ul><!-- /.breadcrumb -->
+
+
+    </div>
+
+
+</div><!-- /.row -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Score)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TestStart)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TestEnd)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Correct)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Em)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestStart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestEnd)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Correct)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bu.BuName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Em.EmName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pa.TestName)
+                </td>
+                <td>
+                    @*<a asp-action="Edit" asp-route-id="@item.ScId">Edit</a> |*@
+                    @*<a asp-controller="TestAns" asp-action="Index" asp-route-id="@item.PaId">Details</a> |*@
+
+
+                    <a  asp-controller="TestAns" asp-action="Index" asp-route-id="@item.PaId" class="tooltip-info" data-rel="tooltip" title="Details">
+                        <span class="blue">
+                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                        </span>
+                    </a>
+                    @*<a asp-action="Delete" asp-route-id="@item.ScId">Delete</a>*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

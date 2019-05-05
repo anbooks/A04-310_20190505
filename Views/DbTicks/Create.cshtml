@@ -1,0 +1,97 @@
+﻿@model IEnumerable<WebApplication8.Models.DbTick>
+
+@{
+    ViewData["Title"] = "Create";
+}
+@{
+    Layout = "_Layout_paperadmin";
+}
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">试题管理</a>
+                </li>
+                <li class="active">试题管理</li>
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+<h2>题目反馈</h2>
+<form asp-controller="DbTicks" asp-action="Create">
+    <p>
+        更新状态: <select name="searchString">
+            <option value="已更新">已更新</option>
+            <option value="未更新">未更新</option>
+        </select>
+        <input type="submit" value="查询" /><a asp-action="Do">条件消除</a>
+    </p>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Ticking)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Handle)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Update)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ticking)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Handle)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Update)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmName)
+                </td>
+                <td>
+                   @* <a asp-action="Edit" asp-route-id="@item.QuId" asp-route-ida="@item.TickId">编辑</a>*@
+                    <a asp-action="Edit" asp-route-id="@item.QuId" class="tooltip-success" data-rel="tooltip" title="Edit">
+                        <span class="green">
+                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                        </span>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<p>
+    <a asp-controller="DbTicks" asp-action="Index">返回主页</a>
+</p>
+<pager pager-option="ViewBag.PagerOption as MoPagerOption"></pager>

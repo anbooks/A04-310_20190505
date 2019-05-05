@@ -1,0 +1,82 @@
+﻿@model WebApplication8.Models.DbQu
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h2>删除页面</h2>
+
+<h3>确认你要删除吗？</h3>
+<div>
+    <h4>题库管理</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            题型
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt>
+            题目
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Question)
+        </dd>
+        <dt>
+            A
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OptionA)
+        </dd>
+        <dt>
+            B
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OptionB)
+        </dd>
+        <dt>
+            C
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OptionC)
+        </dd>
+        <dt>
+            D
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.OptionD)
+        </dd>
+        <dt>
+            正确答案
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.RightAnswer)
+        </dd>
+        <dt>
+            难度
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Difficulty)
+        </dd>
+     
+        <dt>
+            三级专业
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Suc.SucName)
+        </dd>
+        <dt>
+            职位
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Bu.BuName)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="QuId" />
+        <input type="submit" value="删除" class="btn btn-default" /> |
+        <a asp-action="Index">返回题库</a>
+    </form>
+</div>

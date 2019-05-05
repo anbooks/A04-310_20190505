@@ -1,0 +1,66 @@
+﻿@model List<WebApplication8.Models.DbSc>
+@{
+    Layout = "_Layout2";
+}
+@{
+    ViewData["Title"] = "Edit";
+}
+<h2>个人成绩</h2>
+        <form asp-action="Create">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>
+                            姓名
+                        </th>
+                        <th>
+                            答题日期
+                        </th>
+                        <th>
+                            一级专业
+                        </th>
+                        <th>
+                            二级专业
+                        </th>
+                        <th>
+                            三级专业
+                        </th>
+                        <th>
+                            分数
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Em.EmName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TestEnd)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pa.Sua.SuaName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pa.Sub.SubName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Pa.Suc.SucName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Score)
+                        </td>
+                        <td>
+                        <td>
+                            <a asp-area="" asp-controller="DbExams" asp-action="Create" asp-route-id="@item.PaId">错题信息</a>
+                        </td>
+                        
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </form>
+
+<a asp-action="Details" >返回</a>

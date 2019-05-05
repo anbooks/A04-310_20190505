@@ -1,0 +1,88 @@
+﻿@model WebApplication8.Models.Test
+
+@{
+    ViewData["Title"] = "Delete";
+}
+@{
+    Layout = "_Layout_paperadmin";
+}
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">系统管理</a>
+                </li>
+                <li><a asp-action="Index">试题模板</a></li>
+                <li class="active">删除模板</li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Test</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TestName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TestName)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tester)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tester)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Dan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Duo)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Duo)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pan)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Time)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Time)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TestId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">题库管理</a>
+    </form>
+</div>

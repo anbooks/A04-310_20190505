@@ -1,0 +1,126 @@
+﻿@model IEnumerable<WebApplication8.Models.DbPax>
+
+@{
+    Layout =null;
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>在线考试模拟答题</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+    <link href="~/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="~/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <!-- font-awesome icons -->
+    <link href="~/css/fontawesome-all.min.css" rel="stylesheet">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+    
+</head>
+
+<body>
+    <!-- banner -->
+    @*<div class="inner-banner">*@
+    <div class="main-content">
+        <div class="main-content-inner">
+            <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="ace-icon fa fa-home home-icon"></i>
+                        <a asp-area="" class="nav-link" asp-controller="DbEms" asp-action="Start">返回模拟答题首页</a>
+                    </li>
+
+                
+                
+                </ul><!-- /.breadcrumb -->
+
+              
+            </div>
+
+
+        </div><!-- /.row -->
+    </div><!-- /.page-content -->
+    <!-- //banner-text -->
+
+    <!-- typography -->
+    @*<section class="choose py-5">*@
+
+        <section >
+            <div >
+                <div >
+                    <!-- section title -->
+                    <!-- //section title -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5 class="pt-4 pb-3"></h5>
+                            @foreach (var item in Model)
+                            {
+                                <ul class="list-group">
+                                    <li class="list-group-item" style="width:800px;background-color:aliceblue;color:black"> @Html.DisplayFor(modelItem => item.Pax1_ID) (@Html.DisplayFor(modelItem => item.Qu.Type))@Html.DisplayFor(modelItem => item.Qu.Question)</li>
+
+                                    <li class="list-group-item" style="width:800px"><a asp-action="Edit" asp-route-id="@item.Pax1_ID">答题</a> </li>
+
+                                </ul>}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--//newsletter-->
+        <!-- js -->
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <!-- //js -->
+        <!-- start-smooth-scrolling -->
+        <script src="js/move-top.js"></script>
+        <script src="js/easing.js"></script>
+        <script>
+            jQuery(document).ready(function ($) {
+                $(".scroll").click(function (event) {
+                    event.preventDefault();
+
+                    $('html,body').animate({
+                        scrollTop: $(this.hash).offset().top
+                    }, 1000);
+                });
+            });
+        </script>
+        <!-- //end-smooth-scrolling -->
+        <!-- smooth-scrolling-of-move-up -->
+        <script>
+            $(document).ready(function () {
+                /*
+                var defaults = {
+                    containerID: 'toTop', // fading element id
+                    containerHoverID: 'toTopHover', // fading element hover id
+                    scrollSpeed: 1200,
+                    easingType: 'linear'
+                };
+                */
+
+                $().UItoTop({
+                    easingType: 'easeOutQuart'
+                });
+
+            });
+        </script>
+        <script src="js/SmoothScroll.min.js"></script>
+        <!-- //smooth-scrolling-of-move-up -->
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/bootstrap.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+﻿@model IEnumerable<WebApplication8.Models.DbExam>
+@{
+    Layout = "_Layout3";
+}
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>错题</h2>
+
+
+<div class="row">
+    <div class="col-md-4">
+        <table class="table">
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            ( @Html.DisplayFor(modelItem => item.Type) )
+                            @Html.DisplayFor(modelItem => item.PaId) .
+                            @Html.DisplayFor(modelItem => item.Question) ( )
+                        </td>
+
+                    </tr>
+                    <tr>
+
+                        <td> A. @Html.DisplayFor(modelItem => item.OptionA)</td>
+                    </tr>
+                    <tr>
+
+                        <td> B.@Html.DisplayFor(modelItem => item.OptionB)</td>
+
+                    </tr>
+                    <tr>
+
+                        <td> C.@Html.DisplayFor(modelItem => item.OptionC)</td>
+
+                    </tr>
+                    <tr>
+
+                        <td> D.@Html.DisplayFor(modelItem => item.OptionD)</td>
+
+                    </tr>
+                    <tr>
+                        <td>
+                            正确答案： @Html.DisplayFor(modelItem => item.RightAnswer)
+                
+                        </td>
+
+                    </tr>
+
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<p>
+    <a asp-controller="DbEms" asp-action="Index">返回主页</a>
+</p>

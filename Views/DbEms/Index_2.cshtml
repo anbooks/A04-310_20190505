@@ -1,0 +1,133 @@
+﻿@model IEnumerable<WebApplication8.Models.DbEm>
+@{
+    Layout = "_Layout_employee";
+}
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">在线考试系统</a>
+                </li>
+                <li class="active">欢迎页面</li>
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+<p>
+   欢迎来到在线考试系统
+</p>
+
+@*<form asp-controller="DbEms2" asp-action="Index" method="get">
+    <p>
+
+        姓名: <input type="text" name="NameString">
+        <input type="submit" value="查询" />
+    </p>
+</form>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.EmName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Branch)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CardId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BuId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PoId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Picture)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bm.Branch)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CardId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Bu.BuName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Po.PoName)
+            </td>
+            <td>
+                <img src="@Html.DisplayFor(modelItem => item.Picture)" width="30" height="30" />
+            </td>
+            <td>
+
+                @*<a asp-action="Details" asp-route-id="@item.EmId">查询</a> |*@
+                @*<a asp-action="Details" asp-route-id="@item.EmId" class="tooltip-info" data-rel="tooltip" title="Details">
+                    <span class="blue">
+                        <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                    </span>
+                </a>
+
+                @*<a asp-action="Edit" asp-route-id="@item.EmId">修改</a> |
+
+            <a asp-action="Delete" asp-route-id="@item.EmId">删除</a>*@
+
+
+                @*<a asp-action="Edit" asp-route-id="@item.EmId" class="tooltip-success" data-rel="tooltip" title="Edit">
+                    <span class="green">
+                        <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                    </span>
+                </a>
+
+
+
+                <a asp-action="Delete" asp-route-id="@item.EmId" class="tooltip-error" data-rel="tooltip" title="Delete">
+                    <span class="red">
+                        <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                    </span>
+                </a>
+
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<p>
+    <a asp-action="Create" ><i class="ti-plus"></i>添加账号</a>
+</p>
+<pager pager-option="ViewBag.PagerOption as MoPagerOption"></p*@ager>*@*@

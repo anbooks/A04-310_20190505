@@ -1,0 +1,110 @@
+﻿@model WebApplication8.Models.DbQu
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+@{
+    Layout = "_Layout_paperadmin";
+}
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">试题管理</a>
+                </li>
+                <li><a asp-area="" asp-controller="DbTicks" asp-action="Index">题目反馈</a></li>
+                <li class="active">反馈题目编辑</li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="QuId" />
+            <div class="form-group">
+                <label asp-for="Type" class="control-label">题型</label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuId" class="control-label">职位</label>
+                <select asp-for="BuId" class="form-control" asp-items="ViewBag.BuId"></select>
+                <span asp-validation-for="BuId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Question" class="control-label">题目</label>
+                <input asp-for="Question" class="form-control" />
+                <span asp-validation-for="Question" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OptionA" class="control-label">A</label>
+                <input asp-for="OptionA" class="form-control" />
+                <span asp-validation-for="OptionA" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OptionB" class="control-label">B</label>
+                <input asp-for="OptionB" class="form-control" />
+                <span asp-validation-for="OptionB" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OptionC" class="control-label">C</label>
+                <input asp-for="OptionC" class="form-control" />
+                <span asp-validation-for="OptionC" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OptionD" class="control-label">D</label>
+                <input asp-for="OptionD" class="form-control" />
+                <span asp-validation-for="OptionD" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RightAnswer" class="control-label">正确答案</label>
+                <input asp-for="RightAnswer" class="form-control" />
+                <span asp-validation-for="RightAnswer" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SucId" class="control-label">专业</label>
+                <select asp-for="SucId" class="form-control" asp-items="ViewBag.SucId"></select>
+                <span asp-validation-for="BuId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Difficulty" class="control-label">难度</label>
+                <input asp-for="Difficulty" class="form-control" />
+                <span asp-validation-for="Difficulty" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-lg btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">返回题库</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

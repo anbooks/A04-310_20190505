@@ -1,0 +1,41 @@
+﻿@model IEnumerable<WebApplication8.Models.TestQu>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-controller="TestChose" asp-action="Index">添加</a>
+    <a asp-controller="Tests" asp-action="Index">返回</a>
+</p>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Qu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Test)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Qu.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Test.TestName)
+                </td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@item.TequId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

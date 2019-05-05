@@ -1,0 +1,85 @@
+﻿
+@model WebApplication8.Models.DbEm
+@{
+    Layout = "_Layout2";
+}
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>修改密码</h2>
+
+<h4>DbEm</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form id="myform" asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="EmId" />
+            <div>
+                <label class="control-label">旧密码</label>
+                <input asp-for="Password" id="Password_Old" name="Password_Old" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">新密码</label>
+                <input asp-for="Password" id="Password" name="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>确认密码</label>
+                <input asp-for="Password1" type="password" id="Password1" name="Password1" class="form-control" />
+                <span asp-validation-for="Password1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmName" class="control-label"></label>
+                <input asp-for="EmName" class="form-control" />
+                <span asp-validation-for="EmName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Branch" class="control-label"></label>
+                <select asp-for="Branch" class="form-control">
+                    <option></option>
+                    <option>科技与信息化部</option>
+                    <option>人力资源部</option>
+                    <option>经理部</option>
+                    <option>工程研发中心</option>
+                </select>
+
+                <span asp-validation-for="Branch" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="保存" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<script src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<script>
+    // just for the demos, avoids form submit
+    jQuery.validator.setDefaults({
+        debug: true,
+        success: "valid"
+    });
+    $("#myform").validate({
+        rules: {
+            Password: "required",
+            PasswordAgain: {
+                equalTo: "#Password"
+            }
+        }
+    });
+</script>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

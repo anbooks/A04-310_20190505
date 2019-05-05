@@ -1,0 +1,171 @@
+﻿@model WebApplication8.Models.QuesDifficultuModel
+@addTagHelper *,taghelpersample
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+Layout = "_Layout_paperadmin";
+}
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">试题管理</a>
+                </li>
+                <li class="active">试题管理</li>
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+
+<p>
+
+    <a asp-action="Create" class="btn btn-primary btn-flat btn-addon m-b-10 m-l-5"><i class="ti-plus"></i>添加试题</a>
+
+</p>
+<form asp-controller="DbQus" asp-action="Index">
+    <p>
+        题目关键字: <input type="text" name="SearchString">
+        <input type="submit" value="查询" /><a asp-action="Do">条件消除</a>
+    </p>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                题型
+            </th>
+            <th>
+                题目
+            </th>
+
+            <th>
+                难度
+            </th>
+            <th>
+                部门
+            </th>
+           
+            <th>
+                出题人
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.movies)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Difficulty)
+                </td>
+                <td>
+                    @Html.DisplayFor(modeIteml => item.Sua.SuaName)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modeIteml => item.Sub.SubName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modeIteml => item.Suc.SucName)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modeIteml => item.Em.EmName)
+                </td>
+                <td>
+                
+
+                    @*<a asp-action="Details" asp-route-id="@item.EmId">查询</a> |*@
+                    <a asp-action="Details" asp-route-id="@item.QuId" class="tooltip-info" data-rel="tooltip" title="Details">
+                        <span class="blue">
+                            <i class="ace-icon fa fa-search-plus bigger-120"></i>
+                        </span>
+                    </a>
+
+                    @*<a asp-action="Edit" asp-route-id="@item.EmId">修改</a> |
+
+        <a asp-action="Delete" asp-route-id="@item.EmId">删除</a>*@
+
+
+                    <a asp-action="Edit" asp-route-id="@item.QuId" class="tooltip-success" data-rel="tooltip" title="Edit">
+                        <span class="green">
+                            <i class="ace-icon fa fa-pencil-square-o bigger-120"></i>
+                        </span>
+                    </a>
+
+
+
+                    <a asp-action="Delete" asp-route-id="@item.QuId" class="tooltip-error" data-rel="tooltip" title="Delete">
+                        <span class="red">
+                            <i class="ace-icon fa fa-trash-o bigger-120"></i>
+                        </span>
+                    </a>
+
+
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<pager pager-option="ViewBag.PagerOption as MoPagerOption"></pager>
+<script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $("#s1").change(function () {
+            var tt = (document).getElementById("s1");
+            var index = tt.selectedIndex; // 选中索引
+            var text = tt.options[index].text; // 选中文本
+            $.ajax({
+                url: "/DbQus/First",
+                type: "POST",
+                dataType: "text",
+                timeout: 50000,
+                async: "true",
+                data: { text: text },
+                success: function (sub) {
+
+                    $("#se2").html(sub);
+
+
+                },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown, result) {
+
+                    alert("XMLHttpRequest.Status=" + XMLHttpRequest.status + "\ntextstatus=" + textStatus + "\nXMLHttpReqest.readyState=" + XMLHttpRequest.readyState + "\nerrorThrown=" + errorThrown);
+
+                }
+            });
+
+        });
+
+    });
+</script>

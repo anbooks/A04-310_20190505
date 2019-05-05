@@ -1,0 +1,130 @@
+﻿@model WebApplication8.Models.DbBu
+
+@{
+    ViewData["Title"] = "Edit";
+}
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>Services</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+    <link href="~/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="~/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <!-- font-awesome icons -->
+    <link href="~/css/fontawesome-all.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <section class="choose py-5">
+        <div class="container py-md-4 mt-md-3">
+            <div class="row inner_w3l_agile_grids-1 ">
+                -
+                <h3 class="heading-agileinfo text-center">Our <span> Services</span></h3>
+                <div class="row middle-grids mt-md-5 pt-4">
+                    <div class="col-lg-4 about-in-w3ls middle-grid-info text-center">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fas fa-graduation-cap mb-2"></i>
+                                <h5 class="card-title text-uppercase my-3">
+                                    Professional Study
+                                </h5>
+                                <p class="card-text">
+                                 
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 about-in-w3ls middle-grid-info active text-center">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fas fa-book mb-2"></i>
+                                <h5 class="card-title text-uppercase my-3">Summer Session</h5>
+                                <p class="card-text">
+                                   
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 about-in-w3ls middle-grid-info text-center">
+                        <div class="card">
+                            <div class="card-body">
+                                <i class="fas fa-globe mb-2"></i>
+                                <h5 class="card-title text-uppercase my-3">Global Education</h5>
+                                <p class="card-text">
+                                    <a href="~/DbExams/Index" class="btn btn-primary mt-3">题库修改记录</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //services -->
+    <!-- choose -->
+
+
+    
+    <!--//newsletter-->
+    <!-- js -->
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <!-- //js -->
+    <!-- start-smooth-scrolling -->
+    <script src="js/move-top.js"></script>
+    <script src="js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script src="js/SmoothScroll.min.js"></script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>

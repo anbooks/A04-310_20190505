@@ -1,0 +1,66 @@
+﻿
+@model WebApplication8.Models.SubNameViewModel
+@{
+    Layout = null;
+}
+@if (Model != null)
+{
+    <select id="s2" name="sel_2" asp-items="Model.Sel2_na" disabled="disabled">
+        <option selected>考试主管部门</option>
+    </select>
+
+}
+
+else
+{
+    <select id="s2" name="sel_2" disabled="disabled" >
+        <option selected>考试主管部门</option>
+    </select>
+}
+
+@*<span id="se3">
+    <select id="s3" name="sel_3">
+        <option selected>请选择</option>
+    </select>
+</span>*@
+    <div>
+        <input type="submit" class="btn btn-lg btn-primary" value="开始模拟考试" />
+    </div>
+<script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $("#s2").change(function () {
+
+            var tt = (document).getElementById("s2");
+            var index = tt.selectedIndex; // 选中索引
+            var text = tt.options[index].text; // 选中文本
+            $.ajax({
+                url: "/DbEms/Second",
+                type: "POST",
+                dataType: "text",
+                timeout: 500000,
+                async: "true",
+                data: { text: text },
+                success: function (sub) {
+
+                    $("#se3").html(sub);
+
+
+                },
+
+                error: function (XMLHttpRequest, textStatus, errorThrown, result) {
+
+                    alert("XMLHttpRequest.Status=" + XMLHttpRequest.status + "\ntextstatus=" + textStatus + "\nXMLHttpReqest.readyState=" + XMLHttpRequest.readyState + "\nerrorThrown=" + errorThrown);
+
+
+                }
+            });
+
+        });
+
+
+    });
+
+
+</script>
+

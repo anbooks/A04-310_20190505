@@ -1,0 +1,99 @@
+﻿@model WebApplication8.Models.DbEm
+@{
+    Layout = "_Layout_admin";
+}
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">系统管理</a>
+                </li>
+                <li><a asp-action="Index">用户管理</a></li>
+                <li class="active">添加人员信息</li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+<div class="row">
+    <form enctype="multipart/form-data" method="post" asp-action="Import">
+        <div align="left" style="float:left">            <input type="file" name="excelfile" /></div>
+
+                         <div  >
+                             <input type="submit" value="批量添加" />
+                         </div>
+    </form>
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmName" class="control-label"></label>
+                <input asp-for="EmName" class="form-control" />
+                <span asp-validation-for="EmName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Branch" class="control-label"></label>
+                @*<input asp-for="Branch" class="form-control" />*@
+                <select asp-for="Branch" class="form-control" asp-items="ViewBag.Branch"></select>
+                <span asp-validation-for="Branch" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="PoId" class="control-label"></label>
+                <select asp-for="PoId" class="form-control" asp-items="ViewBag.PoId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BuId" class="control-label"></label>
+                <select asp-for="BuId" class="form-control" asp-items="ViewBag.BuId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="CardId" class="control-label"></label>
+                <input asp-for="CardId" class="form-control" />
+                <span asp-validation-for="CardId" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                <input type="submit" value="添加" class="btn btn-lg btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">后台管理</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

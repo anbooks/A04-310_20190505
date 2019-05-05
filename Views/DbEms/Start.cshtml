@@ -1,0 +1,186 @@
+﻿@model WebApplication8.Models.DbQu
+
+@{
+    Layout = "_Layout_employee";
+}
+
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">练习模式</a>
+                </li>
+                <li class="active">开始答题</li>
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+<body>
+    <!-- banner -->
+    <div class="banner">
+
+        <div class="container">
+            <!-- banner-text -->
+            <div class="banner-text">
+                <div class="slider-info">
+                    <h3>欢迎使用在线考试系统 <span>选择练习的试题主管部门进行答题 </span> </h3>
+                    <section>
+                        <form method="post">
+                            <div>
+
+                                <span>
+                                    <select id="s1" asp-items="ViewBag.first" name="sel_1">
+                                        <option selected>请选择</option>
+                                    </select>
+                                </span>
+                                <span id="se2">
+                                    @await Html.PartialAsync("/Views/DbEms/First.cshtml")
+                                </span>
+
+                            </div>
+                        </form>
+                  
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- //banner-text -->
+    <!--banner form-->
+    <!-- //feedback -->
+    <!-- stats -->
+    <!--//newsletter-->
+    <!-- js -->
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <!-- //js -->
+    <!-- carousel(for feedback) -->
+    <script src="js/owl.carousel.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                responsiveClass: true,
+                responsive: {
+                    0: {
+                        items: 1,
+                        nav: true
+                    },
+                    600: {
+                        items: 2,
+                        nav: false
+                    },
+                    1000: {
+                        items: 3,
+                        nav: true,
+                        loop: false,
+                        margin: 20
+                    }
+                }
+            })
+        })
+    </script>
+
+    <!-- //carousel(for feedback) -->
+    <!-- stats -->
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.countup.js"></script>
+    <script>
+        $('.counter').countUp();
+    </script>
+    <!-- //stats -->
+    <!-- start-smooth-scrolling -->
+    <script src="js/move-top.js"></script>
+    <script src="js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script src="js/SmoothScroll.min.js"></script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+
+    <script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+    <script type="text/javascript" language="javascript">
+        $(document).ready(function () {
+            $("#s1").change(function () {
+                var tt = (document).getElementById("s1");
+                var index = tt.selectedIndex; // 选中索引
+                var text = tt.options[index].text; // 选中文本
+                $.ajax({
+                    url: "/DbEms/First",
+                    type: "POST",
+                    dataType: "text",
+                    timeout: 50000,
+                    async: "true",
+                    data: { text: text },
+                    success: function (sub) {
+
+                        $("#se2").html(sub);
+
+
+                    },
+
+                    error: function (XMLHttpRequest, textStatus, errorThrown, result) {
+
+                        alert("XMLHttpRequest.Status=" + XMLHttpRequest.status + "\ntextstatus=" + textStatus + "\nXMLHttpReqest.readyState=" + XMLHttpRequest.readyState + "\nerrorThrown=" + errorThrown);
+
+                    }
+                });
+
+            });
+
+        });
+    </script>
+
+
+</body>
+
+
+

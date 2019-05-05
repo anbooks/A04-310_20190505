@@ -1,0 +1,44 @@
+﻿@model WebApplication8.Models.DbPax
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<h4>DbPax</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="PaxId" />
+            <div class="form-group">
+                <label asp-for="QuId" class="control-label"></label>
+                <select asp-for="QuId" class="form-control" asp-items="ViewBag.QuId"></select>
+                <span asp-validation-for="QuId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PaId" class="control-label"></label>
+                <select asp-for="PaId" class="form-control" asp-items="ViewBag.PaId"></select>
+                <span asp-validation-for="PaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Pax1_ID" class="control-label"></label>
+                <input asp-for="Pax1_ID" class="form-control" />
+                <span asp-validation-for="Pax1_ID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

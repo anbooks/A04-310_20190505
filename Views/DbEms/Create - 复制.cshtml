@@ -1,0 +1,140 @@
+﻿@model WebApplication8.Models.DbEm
+@{
+    Layout = null;
+}
+@{
+    ViewData["Title"] = "登录";
+}
+
+<!DOCTYPE html>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<html lang="zxx">
+
+<head>
+    <title>登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+
+    <!-- Custom Theme files -->
+    <link href="css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="css/style.css" type="text/css" rel="stylesheet" media="all">
+    <!-- Testimonials-Css -->
+    <link rel="stylesheet" href="css/owl.theme.css" type="text/css" media="all">
+    <link rel="stylesheet" href="css/owl.carousel.css" type="text/css" media="screen" property="" />
+    <!-- font-awesome icons -->
+    <link href="css/fontawesome-all.min.css" rel="stylesheet">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+
+</head>
+
+<body>
+    <center>
+        <!-- banner -->
+        <div class="banner">
+            <!-- header -->
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-gradient-secondary pt-3">
+                    <h1>
+                        <a class="navbar-brand" href="index.html">
+                            在线考试
+
+                        </a>
+                    </h1>
+
+                    <button class="navbar-toggler ml-md-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto"></ul>
+                    </div>
+                </nav>
+            </header>
+            <!-- //header -->
+            <div class="container">
+                <!-- banner-text -->
+                <div class="banner-text">
+                    <div class="slider-info">
+                        <h3>欢迎进入 <span>在线考试 </span> 系统</h3>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- //banner-text -->
+        <!--banner form-->
+        <section class="banner_form py-5">
+            <div class="container py-lg-3">
+                <div class="row ban_form">
+                    <div class="col-lg-8 bg-white fom-left">
+                        <div class="categories_sub cats1">
+                            <h2 class="heading-agileinfo">Welcome To <span> Education</span></h2>
+                            <p class="vam">Vivamus sed porttitor felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Sed lorem enim, Vivamus sed porttitor felis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.Sed lorem enim, </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 reg-fom">
+                        <h4 class="text-white text-center">登录</h4>
+                        <form asp-action="Create" id="commentForm">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="form-group mg-t20">
+                                <i class="icon_font glyphicon glyphicon-user"></i>
+                                <label asp-for="CardId" class="text-white mb-2"></label>
+                                <input asp-for="CardId" name="cardId" class="form-control" />
+                                <span asp-validation-for="CardId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group mg-t20">
+                                <i class="icon_font glyphicon glyphicon-user"></i>
+                                <label asp-for="Password" class="text-white mb-2"></label>
+                                <input asp-for="Password" type="password" name="password" class="form-control" />
+                                <span asp-validation-for="Password" class="text-danger"></span>
+                            </div>
+
+                            <div class="form-group">
+                                <a asp-action="Edit" asp-route-EmId="E_Id"> <input type="submit" value="登录" class="btn btn-default" /></a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--//banner form-->
+        <!-- /services -->
+        <!--//newsletter-->
+        <!-- js -->
+        <script src="js/jquery-2.2.3.min.js"></script>
+        <!-- //js -->
+        <!-- carousel(for feedback) -->
+        <script src="js/owl.carousel.js"></script>
+
+
+        <!-- //carousel(for feedback) -->
+        <!-- stats -->
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/jquery.countup.js"></script>
+        <script>
+            $('.counter').countUp();
+        </script>
+        <!-- //stats -->
+        <!-- start-smooth-scrolling -->
+        <script src="js/move-top.js"></script>
+        <script src="js/easing.js"></script>
+
+        <!-- //end-smooth-scrolling -->
+
+        <script src="js/SmoothScroll.min.js"></script>
+        <!-- //smooth-scrolling-of-move-up -->
+        <!-- Bootstrap core JavaScript
+    ================================================== -->
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="js/bootstrap.js"></script>
+        </center>
+</body>
+</html>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication8.Models.Test>
+    @{ 
+        Layout = "_Layout1";
+    }
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>选择试卷</h2>
+
+
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TestName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tester)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Dan)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Duo)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TestName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tester)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Duo)
+                </td>
+
+                <td>
+
+                    <a asp-controller="TestStart" asp-action="Index" asp-route-id="@item.TestId">开始考试</a>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,77 @@
+﻿@model WebApplication8.Models.DbTick
+
+@{
+    ViewData["Title"] = "Delete";
+}
+@{
+    Layout = "_Layout_paperadmin";
+}
+<div class="main-content">
+    <div class="main-content-inner">
+        <div class="breadcrumbs ace-save-state" id="breadcrumbs">
+            <ul class="breadcrumb">
+                <li>
+                    <i class="ace-icon fa fa-home home-icon"></i>
+                    <a href="#">Home</a>
+                </li>
+
+                <li>
+                    <a href="#">试题管理</a>
+                </li>
+                <li><a asp-area="" asp-controller="DbTicks" asp-action="Index">题目反馈</a></li>
+                <li class="active">反馈信息删除</li>
+
+            </ul><!-- /.breadcrumb -->
+
+            <div class="nav-search" id="nav-search">
+                <form class="form-search">
+                    <span class="input-icon">
+                        <input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+                        <i class="ace-icon fa fa-search nav-search-icon"></i>
+                    </span>
+                </form>
+            </div><!-- /.nav-search -->
+        </div>
+
+
+    </div><!-- /.row -->
+</div><!-- /.page-content -->
+
+
+<h3>确定要删除反馈意见吗?</h3>
+<div>
+    <h4>DbTick</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ticking)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ticking)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Handle)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Handle)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Update)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Update)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.QuId)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.QuId)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="TickId" />
+        <input type="submit" value="Delete" class="btn btn-default" /> |
+        <a asp-action="Index">反馈题目反馈</a>
+    </form>
+</div>

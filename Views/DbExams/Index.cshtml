@@ -1,0 +1,117 @@
+﻿@model IEnumerable<WebApplication8.Models.DbExam>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+    <title>在线考试</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8" />
+    <meta name="keywords" content="" />
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+    <!-- Custom Theme files -->
+    <link href="~/css/bootstrap.css" type="text/css" rel="stylesheet" media="all">
+    <link href="~/css/style.css" type="text/css" rel="stylesheet" media="all">
+    <!-- font-awesome icons -->
+    <link href="~/css/fontawesome-all.min.css" rel="stylesheet">
+    <!-- //Custom Theme files -->
+    <!-- online-fonts -->
+
+</head>
+
+<body>
+    <!-- banner -->
+ 
+    <!-- //banner-text -->
+   
+    <!-- typography -->
+    <section >
+        <div >
+            <div class="row inner_w3l_agile_grids-1 ">
+                <!-- section title -->
+                <h2 class="heading-agileinfo">错题<span>信息</span></h2>
+                <!-- //section title -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5 class="pt-4 pb-3"></h5>
+                        @foreach (var item in Model)
+                        {<ul class="list-group">
+                        <li class="list-group-item" style="width:800px;background-color:aliceblue;color:black">
+                            ( @Html.DisplayFor(modelItem => item.Type) )
+                            @Html.DisplayFor(modelItem => item.Pax1_ID) .
+                            @Html.DisplayFor(modelItem => item.Question) ( )
+                        </li>
+
+                        <li class="list-group-item" style="width:800px">A. @Html.DisplayFor(modelItem => item.OptionA)</li>
+                        <li class="list-group-item" style="width:800px">B. @Html.DisplayFor(modelItem => item.OptionB)</li>
+                        <li class="list-group-item" style="width:800px">C. @Html.DisplayFor(modelItem => item.OptionC)</li>
+                        <li class="list-group-item" style="width:800px">D. @Html.DisplayFor(modelItem => item.OptionD) </li>
+                        <li class="list-group-item" style="width:800px;color:red">
+                           
+                                正确答案： @Html.DisplayFor(modelItem => item.RightAnswer)
+                                您的答案： @Html.DisplayFor(modelItem => item.EmAnswer)
+                           
+                        </li>
+                    </ul>}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--//newsletter-->
+    <!-- js -->
+    <script src="js/jquery-2.2.3.min.js"></script>
+    <!-- //js -->
+    <!-- start-smooth-scrolling -->
+    <script src="js/move-top.js"></script>
+    <script src="js/easing.js"></script>
+    <script>
+        jQuery(document).ready(function ($) {
+            $(".scroll").click(function (event) {
+                event.preventDefault();
+
+                $('html,body').animate({
+                    scrollTop: $(this.hash).offset().top
+                }, 1000);
+            });
+        });
+    </script>
+    <!-- //end-smooth-scrolling -->
+    <!-- smooth-scrolling-of-move-up -->
+    <script>
+        $(document).ready(function () {
+            /*
+            var defaults = {
+                containerID: 'toTop', // fading element id
+                containerHoverID: 'toTopHover', // fading element hover id
+                scrollSpeed: 1200,
+                easingType: 'linear'
+            };
+            */
+
+            $().UItoTop({
+                easingType: 'easeOutQuart'
+            });
+
+        });
+    </script>
+    <script src="js/SmoothScroll.min.js"></script>
+    <!-- //smooth-scrolling-of-move-up -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/bootstrap.js"></script>
+</body>
+</html>
