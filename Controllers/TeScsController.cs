@@ -35,6 +35,9 @@ namespace WebApplication8.Controllers
         // GET: TeScs/Details/5
         public async Task<IActionResult> Details()
         {
+            var count = from d in _context.Test where (d.ShenpiFlag == 0) select d;
+            int number = count.Count();
+            ViewBag.NUM = number;
             List<DbSc> dbsc = new List<DbSc>();
             //List<DbSta> dbsta = new List<DbSta>();
             string num = (Guid.NewGuid().ToString());
