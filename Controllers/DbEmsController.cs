@@ -251,7 +251,20 @@ namespace WebApplication8.Controllers
         {
             IQueryable<string> pro = from m in _context.DbSu1 orderby m.SuaName select m.SuaName;
             ViewBag.first = new SelectList(await pro.ToListAsync());
-            return View();
+            var i=HttpContext.Session.GetInt32("Sign");
+
+            if (i==null)
+            {               
+                return View();
+            }
+            else
+            {
+                ViewData["ErrorId"] = i;
+                //ModelState.AddModelError("NumError", "该专业下试题数量不足，请选择其他专业");
+                
+                return View();
+            }
+            
         }
 
         [HttpPost]

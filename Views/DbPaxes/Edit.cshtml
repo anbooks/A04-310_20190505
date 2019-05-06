@@ -12,6 +12,20 @@
 
     }
 }
+@{
+    if (ViewData["ErrorSign"] != null)
+    {
+
+        <script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+        <script type="text/javascript" language="javascript">
+            $(document).ready(function () {
+
+                alert("请作答当前试题");
+
+            });
+        </script>
+    }
+}
 
 <div class="main-content">
     <div class="main-content-inner">
@@ -25,12 +39,12 @@
                 <li>
                     <a href="#">模拟答题</a>
                 </li>
-               
+
                 <li class="active">单选</li>
 
             </ul><!-- /.breadcrumb -->
 
-         
+
         </div>
 
 
@@ -58,6 +72,7 @@
                     <td width="80px" valign="top">（单选）@Html.DisplayFor(modelItem => Model.Pax1_ID) .</td>
                     <td>@Html.DisplayFor(modelItem => modelItem.Qu.Question)</td>
                 </tr>
+                
                 @{
                     if (answer == null)
                     {
