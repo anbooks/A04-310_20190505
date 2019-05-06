@@ -52,6 +52,8 @@ namespace WebApplication8.Controllers
         // GET: DbPaxes
         public async Task<IActionResult> Index()
         {
+            pax_list.Clear();
+            ans_list.Clear();
 
             ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
             if (ViewBag.UserId == null)
@@ -88,10 +90,16 @@ namespace WebApplication8.Controllers
             {
                 var sel = await _context.DbSu1.SingleOrDefaultAsync(d => d.SuaName.Equals(select1));
                 qu = from d in _context.DbQu where (d.SuaId == sel.SuaId) select d;
+                if(qu.Count()==0)
+                {
+                    HttpContext.Session.SetInt32("Sign", 1);
+                    return RedirectToAction("Start", "DbEms");
+                }
 
             }
             else
             {
+                HttpContext.Session.SetInt32("Sign", 0);
                 qu = from d in _context.DbQu select d;
             }
 
@@ -349,6 +357,13 @@ namespace WebApplication8.Controllers
         public async Task<IActionResult> Create(int? id)
         {
             var paperId = HttpContext.Session.GetInt32("paperId");
+            var Sign = HttpContext.Session.GetInt32("ErrorSign");
+
+            if (Sign == 1)
+            {
+                ViewData["ErrorSign"] = 1;
+            }
+
             if (id == null)
             {
                 return NotFound();
@@ -405,9 +420,15 @@ namespace WebApplication8.Controllers
             }
             if (stores == null)
             {
-                ModelState.AddModelError("", "请作答，选项不能为空");//不显示
+                HttpContext.Session.SetInt32("ErrorSign", 1);
+                //ModelState.AddModelError("", "请作答，选项不能为空");//不显示
                 return RedirectToAction("Create", "DbPaxes", id);
             }
+            else
+            {
+                HttpContext.Session.SetInt32("ErrorSign", 0);
+            }
+
 
             if (id != dbPax.Pax1_ID)
             {
@@ -495,7 +516,11 @@ namespace WebApplication8.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             var paId = HttpContext.Session.GetInt32("paperId");
-
+            var Sign = HttpContext.Session.GetInt32("ErrorSign");
+            if(Sign==1)
+            {
+                ViewData["ErrorSign"] = 1;
+            }
 
             if (id == 0)
             {
@@ -576,9 +601,15 @@ namespace WebApplication8.Controllers
             }
             if (Option == null)
             {
-                ModelState.AddModelError("", "请作答，选项不能为空");//不显示
+                //ModelState.AddModelError("", "请作答，选项不能为空");//不显示
                 //return View();
-                return RedirectToAction("Edit", "DbPaxes", id);
+                
+                HttpContext.Session.SetInt32("ErrorSign",1);
+                return RedirectToAction("Edit", "DbPaxes");
+            }
+            else
+            {
+                HttpContext.Session.SetInt32("ErrorSign", 0);
             }
 
 

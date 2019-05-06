@@ -15,6 +15,7 @@ namespace WebApplication8.Models
             DbPa = new HashSet<DbPa>();
             DbSta = new HashSet<DbSta>();
             TestAn = new HashSet<TestAn>();
+            TeEm= new HashSet<TeEm>();
         }
 
         public int EmId { get; set; }
@@ -67,6 +68,6 @@ namespace WebApplication8.Models
         public ICollection<DbSta> DbSta { get; set; }
         public ICollection<TestAn> TestAn { get; set; }
 
-
+        public ICollection<TeEm> TeEm { get; set; }
     }
 }

@@ -2,7 +2,7 @@
 @{ 
     Layout = "_Layout_paperadmin";
 }
-<a asp-controller="TestQus" asp-action="Index">返回</a>
+
 <table id="bootstrap-data-table" class="table table-striped table-bordered">
     <thead>
         <tr>
@@ -39,3 +39,4 @@
         }
     </tbody>
 </table>
+<a asp-controller="TestQus" asp-action="Index" asp-route-id="@ViewBag.Teid">返回</a>

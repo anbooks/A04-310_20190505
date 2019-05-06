@@ -25,7 +25,8 @@ namespace WebApplication8.Controllers
             //var nEUContext = from m _context.DbExam
             //                 select m;
             var arr_p= from m in _context.DbExam
-                       where (m.PaId == id && m.RW == "错")
+                       where (m.PaId == id )
+                       orderby (m.Pax1_ID)
                        select m;
 
             return View(await arr_p.ToListAsync());

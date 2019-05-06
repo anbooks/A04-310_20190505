@@ -1,0 +1,37 @@
+﻿@model IEnumerable<WebApplication8.Models.TeEm>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_Layout_paperadmin";
+}
+
+<h2>考试人员</h2>
+
+<p>
+    <a asp-action="Details" >添加人员</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+              考试人员
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.Em.EmName)
+            </td>
+            <td>
+               
+                <a asp-action="Delete" asp-route-id="@item.Id">删除</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

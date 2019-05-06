@@ -11,9 +11,21 @@
         answer = ans.ToString();
 
     }
+}
 
+@{
+    if (ViewData["ErrorSign"] != null)
+    {
 
+        <script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
+        <script type="text/javascript" language="javascript">
+            $(document).ready(function () {
 
+                alert("请作答当前试题");
+
+            });
+        </script>
+    }
 }
 <div class="main-content">
     <div class="main-content-inner">

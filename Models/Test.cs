@@ -12,6 +12,7 @@ namespace WebApplication8.Models
             TeTe = new HashSet<TeTe>();
             TestAn = new HashSet<TestAn>();
             TestQu = new HashSet<TestQu>();
+            TeEm = new HashSet<TeEm>();
         }
 
         public int TestId { get; set; }
@@ -42,5 +43,6 @@ namespace WebApplication8.Models
         public ICollection<TestQu> TestQu { get; set; }
         public ICollection<TeSc> TeSc { get; set; }
         public ICollection<TeTe> TeTe { get; set; }
+        public ICollection<TeEm> TeEm { get; set; }
     }
 }

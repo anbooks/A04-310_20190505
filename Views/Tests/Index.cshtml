@@ -93,17 +93,21 @@
             <td>
 
                 @*<a asp-action="Details" asp-route-id="@item.TestId">Details</a> |
-            <a asp-action="Edit" asp-route-id="@item.TestId">查看</a>*@
+        <a asp-action="Edit" asp-route-id="@item.TestId">查看</a>*@
                 @*<a asp-action="Details" asp-route-id="@item.EmId">查询</a> |*@
-                <a asp-controller="TestQus" asp-action="Index" asp-route-id="@item.TestId" class="tooltip-info" data-rel="tooltip" title="Details">
+                <a asp-controller="TestQus" asp-action="Index" asp-route-id="@item.TestId" class="tooltip-info" data-rel="tooltip" title="查看试题">
                     <span class="blue">
                         <i class="ace-icon fa fa-search-plus bigger-120"></i>
                     </span>
                 </a>
-
+                <a asp-controller="TeEms" asp-action="Index" asp-route-id="@item.TestId" class="tooltip-info" data-rel="tooltip" title="考试人员">
+                    <span class="blue">
+                        <i class="ace-icon glyphicon  glyphicon-plus bigger-120"></i>
+                    </span>
+                </a>
                 @*<a asp-action="Edit" asp-route-id="@item.EmId">修改</a> |
 
-            <a asp-action="Delete" asp-route-id="@item.EmId">删除</a>*@
+        <a asp-action="Delete" asp-route-id="@item.EmId">删除</a>*@
 
 
                 <a asp-action="Edit" asp-route-id="@item.TestId" class="tooltip-success" data-rel="tooltip" title="Edit">
