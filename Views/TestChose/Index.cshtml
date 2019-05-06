@@ -1,38 +1,41 @@
 ﻿@model IEnumerable<WebApplication8.Models.DbQu>
+@{ 
+    Layout = "_Layout_paperadmin";
+}
+<a asp-controller="TestQus" asp-action="Index">返回</a>
+<table id="bootstrap-data-table" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Question)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Difficulty)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Question)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Difficulty)
+                </td>
 
-                                        <table id="bootstrap-data-table" class="table table-striped table-bordered">
-                                            <thead>
-                                                <tr>
-                                                    <th>
-                                                        @Html.DisplayNameFor(model => model.Type)
-                                                    </th>
-                                                    <th>
-                                                        @Html.DisplayNameFor(model => model.Question)
-                                                    </th>
-                                                    <th>
-                                                        @Html.DisplayNameFor(model => model.Difficulty)
-                                                    </th>
-                                                    <th></th>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                @foreach (var item in Model)
-                                                {
-                                                    <tr>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Type)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Question)
-                                                        </td>
-                                                        <td>
-                                                            @Html.DisplayFor(modelItem => item.Difficulty)
-                                                        </td>
-
-                                                        <td>                                                          
-                                                            <a asp-action="Details" asp-route-id="@item.QuId">添加到试卷</a> 
-                                                        </td>
-                                                    </tr>
-                                                }
-                                            </tbody>
-                                        </table>
+                <td>
+                    <a asp-action="Details" asp-route-id="@item.QuId">添加到试卷</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

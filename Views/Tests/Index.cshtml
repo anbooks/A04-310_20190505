@@ -95,7 +95,7 @@
                 @*<a asp-action="Details" asp-route-id="@item.TestId">Details</a> |
             <a asp-action="Edit" asp-route-id="@item.TestId">查看</a>*@
                 @*<a asp-action="Details" asp-route-id="@item.EmId">查询</a> |*@
-                <a asp-action="Details" asp-route-id="@item.TestId" class="tooltip-info" data-rel="tooltip" title="Details">
+                <a asp-controller="TestQus" asp-action="Index" asp-route-id="@item.TestId" class="tooltip-info" data-rel="tooltip" title="Details">
                     <span class="blue">
                         <i class="ace-icon fa fa-search-plus bigger-120"></i>
                     </span>

@@ -2,12 +2,14 @@
 
 @{
     ViewData["Title"] = "Index";
+    Layout = "_Layout_paperadmin";
 }
+
 
 <h2>Index</h2>
 
 <p>
-    <a asp-controller="TestChose" asp-action="Index">添加</a>
+    <a asp-controller="TestChose" asp-action="Index" >添加</a>
     <a asp-controller="Tests" asp-action="Index">返回</a>
 </p>
 <table class="table table-striped">

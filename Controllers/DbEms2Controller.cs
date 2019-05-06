@@ -60,6 +60,8 @@ namespace WebApplication8.Controllers
                         dbEm.BuId = aaa.BuId;
                         var bbb = await _context.DbPo.SingleOrDefaultAsync(m => m.PoName == worksheet.Cells[row, 4].Value.ToString());
                         dbEm.PoId = bbb.PoId;
+                        var ccc= await _context.DbBm.SingleOrDefaultAsync(m => m.Branch == worksheet.Cells[row, 1].Value.ToString());
+                        dbEm.Branch = ccc.Id;
                         dbEm.CardId = a;
                         dbEm.Password = worksheet.Cells[row, 6].Value.ToString();
                         _context.Add(dbEm);
