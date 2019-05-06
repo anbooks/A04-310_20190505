@@ -30,7 +30,7 @@ namespace WebApplication8
                 options.Cookie.HttpOnly = true;
             });
             services.AddMvc();
-            var connection = @"Server=192.168.44.128;Database=NEU;Trusted_Connection=false;User Id=sa;Password=123;ConnectRetryCount=0";
+            var connection = @"Server=192.168.80.142;Database=NEU;Trusted_Connection=false;User Id=sa;Password=123;ConnectRetryCount=0";
             services.AddDbContext<NEUContext>(options => options.UseSqlServer(connection, b => b.UseRowNumberForPaging()));
         }
 
