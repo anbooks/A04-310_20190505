@@ -48,11 +48,7 @@
                 <input asp-for="TestName" class="form-control" />
                 <span asp-validation-for="TestName" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Tester" class="control-label"></label>
-                <input asp-for="Tester" class="form-control" />
-                <span asp-validation-for="Tester" class="text-danger"></span>
-            </div>
+            
             <div class="form-group">
                 <label asp-for="Dan" class="control-label"></label>
                 <input asp-for="Dan" class="form-control" />
@@ -87,12 +83,23 @@
                 <label asp-for="PanScore" class="control-label"></label>
                 <input asp-for="PanScore" class="form-control" />
                 <span asp-validation-for="PanScore" class="text-danger"></span>
+            </div> 
+            <div class="form-group">
+                <label asp-for="StartTime" class="control-label"></label>
+                <input asp-for="StartTime" class="form-control" />
+                <span asp-validation-for="StartTime" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ShenpiFlag" class="control-label"></label>
-                <input asp-for="ShenpiFlag" class="form-control" readonly="readonly" />
-                <span asp-validation-for="ShenpiFlag" class="text-danger"></span>
+                <label asp-for="EndTime" class="control-label"></label>
+                <input asp-for="EndTime" class="form-control" />
+                <span asp-validation-for="EndTime" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="Adress" class="control-label"></label>
+                <input asp-for="Adress" class="form-control" />
+                <span asp-validation-for="Adress" class="text-danger"></span>
+            </div>
+           
             <div class="form-group">
                 <input type="submit" value="保存" class="btn btn-lg btn-primary" />
             </div>

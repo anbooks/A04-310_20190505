@@ -56,7 +56,7 @@ namespace WebApplication8.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=192.168.44.128;Database=NEU;User id=sa;Password=123;Trusted_Connection=false;");
+                optionsBuilder.UseSqlServer(@"Server=192.168.44.131;Database=NEU;User id=sa;Password=123;Trusted_Connection=false;");
             }
         }
 
@@ -730,6 +730,11 @@ namespace WebApplication8.Models
                 entity.Property(e => e.TestName).IsRequired();
 
                 entity.Property(e => e.Tester).IsRequired();
+                entity.Property(e => e.Adress).HasMaxLength(50);
+
+                entity.Property(e => e.EndTime).HasColumnType("datetime");
+       
+                entity.Property(e => e.StartTime).HasColumnType("datetime");
             });
 
 

@@ -16,11 +16,9 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Qu)
+                @Html.DisplayNameFor(model => model.Qu.Question)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Test)
-            </th>
+            
             <th></th>
         </tr>
     </thead>
@@ -31,11 +29,9 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.Qu.Question)
                 </td>
+               
                 <td>
-                    @Html.DisplayFor(modelItem => item.Test.TestName)
-                </td>
-                <td>
-                    <a asp-action="Delete" asp-route-id="@item.TequId">Delete</a>
+                    <a asp-action="Delete" asp-route-id="@item.TequId">删除</a>
                 </td>
             </tr>
         }
