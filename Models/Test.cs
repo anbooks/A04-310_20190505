@@ -39,6 +39,12 @@ namespace WebApplication8.Models
         public int? PanScore { get; set; }
         [Display(Name = "审批标记")]
         public int? ShenpiFlag { get; set; }
+        [Display(Name = "考试开始时间")]
+        public DateTime? StartTime { get; set; }
+        [Display(Name = "考试结束时间")]
+        public DateTime? EndTime { get; set; }
+        [Display(Name = "考试地点")]
+        public string Adress { get; set; }
         public ICollection<TestAn> TestAn { get; set; }
         public ICollection<TestQu> TestQu { get; set; }
         public ICollection<TeSc> TeSc { get; set; }

@@ -60,7 +60,13 @@
                 @Html.DisplayNameFor(model => model.Time)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ShenpiFlag)
+                @Html.DisplayNameFor(model => model.StartTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EndTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Adress)
             </th>
             <th></th>
         </tr>
@@ -88,12 +94,18 @@
                 @Html.DisplayFor(modelItem => item.Time)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ShenpiFlag)
+                @Html.DisplayFor(modelItem => item.StartTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EndTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Adress)
             </td>
             <td>
 
                 @*<a asp-action="Details" asp-route-id="@item.TestId">Details</a> |
-        <a asp-action="Edit" asp-route-id="@item.TestId">查看</a>*@
+            <a asp-action="Edit" asp-route-id="@item.TestId">查看</a>*@
                 @*<a asp-action="Details" asp-route-id="@item.EmId">查询</a> |*@
                 <a asp-controller="TestQus" asp-action="Index" asp-route-id="@item.TestId" class="tooltip-info" data-rel="tooltip" title="查看试题">
                     <span class="blue">
@@ -107,7 +119,7 @@
                 </a>
                 @*<a asp-action="Edit" asp-route-id="@item.EmId">修改</a> |
 
-        <a asp-action="Delete" asp-route-id="@item.EmId">删除</a>*@
+            <a asp-action="Delete" asp-route-id="@item.EmId">删除</a>*@
 
 
                 <a asp-action="Edit" asp-route-id="@item.TestId" class="tooltip-success" data-rel="tooltip" title="Edit">
