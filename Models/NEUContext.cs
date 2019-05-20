@@ -1,6 +1,5 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
-using HighchartsNETCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -34,8 +33,7 @@ namespace WebApplication8.Models
         public virtual DbSet<TestAn> TestAn { get; set; }
         public virtual DbSet<TestQu> TestQu { get; set; }
         public virtual DbSet<TeTe> TeTe { get; set; }
-
-        
+        public virtual DbSet<TeEm> TeEm { get; set; }
         public NEUContext(DbContextOptions<NEUContext> options)
             : base(options)
         {
@@ -58,7 +56,7 @@ namespace WebApplication8.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=192.168.20.77;Database=NEU;User id=iter;Password=SACC123NEU;Trusted_Connection=false;");
+                optionsBuilder.UseSqlServer(@"Server=192.168.44.131;Database=NEU;User id=sa;Password=123;Trusted_Connection=false;");
             }
         }
 
@@ -68,6 +66,20 @@ namespace WebApplication8.Models
         /// <param name="构造模型类"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<TeEm>(entity =>
+            {
+                entity.Property(e => e.TeFlag).HasColumnName("Te_Flag");
+
+                entity.HasOne(d => d.Em)
+                    .WithMany(p => p.TeEm)
+                    .HasForeignKey(d => d.TeEmId)
+                    .HasConstraintName("FK__TeEm__TeEmId__29221CFB");
+
+                entity.HasOne(d => d.Te)
+                    .WithMany(p => p.TeEm)
+                    .HasForeignKey(d => d.Teid)
+                    .HasConstraintName("FK__TeEm__Teid__2A164134");
+            });
             modelBuilder.Entity<DbBm>(entity =>
             {
                 entity.HasKey(e => e.Id);//20190430
@@ -718,6 +730,11 @@ namespace WebApplication8.Models
                 entity.Property(e => e.TestName).IsRequired();
 
                 entity.Property(e => e.Tester).IsRequired();
+                entity.Property(e => e.Adress).HasMaxLength(50);
+
+                entity.Property(e => e.EndTime).HasColumnType("datetime");
+       
+                entity.Property(e => e.StartTime).HasColumnType("datetime");
             });
 
 

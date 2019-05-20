@@ -31,7 +31,7 @@ namespace WebApplication8.Controllers
             {
                 return Redirect("~/Login/Create");
             }
-            return View(await _context.Test.ToListAsync());
+            return View(await _context.Test.Where(m=>m.Tester==dbem.CardId).ToListAsync());
         }
 
         // GET: Tests/Details/5
@@ -72,7 +72,7 @@ namespace WebApplication8.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("TestId,TestName,Tester,Dan,Duo,Pan,Time,DanScore,DuoScore,PanScore")] Test test)
+        public async Task<IActionResult> Create([Bind("TestId,TestName,Tester,Dan,Duo,Pan,Time,DanScore,DuoScore,PanScore,StartTime,EndTime,Adress")] Test test)
         {
             ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
             DbEm dbem = new DbEm();
@@ -126,7 +126,7 @@ namespace WebApplication8.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("TestId,TestName,Tester,Dan,Duo,Pan,Time,DanScore,DuoScore,PanScore,ShenpiFlag")] Test test)
+        public async Task<IActionResult> Edit(int id, [Bind("TestId,TestName,Dan,Duo,Pan,Time,DanScore,DuoScore,PanScore,StartTime,EndTime,Adress")] Test test)
         {
             ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
             DbEm dbem = new DbEm();
@@ -147,8 +147,8 @@ namespace WebApplication8.Controllers
                 try
                 {
                     int ceshi =Convert.ToInt32( test.ShenpiFlag);
-
-
+                    test.Tester = dbem.CardId;
+                    test.ShenpiFlag = 0;
                     _context.Update(test);
                     await _context.SaveChangesAsync();
                 }
