@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations.Schema;
+using HighchartsNETCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 
@@ -33,6 +34,8 @@ namespace WebApplication8.Models
         public virtual DbSet<TestAn> TestAn { get; set; }
         public virtual DbSet<TestQu> TestQu { get; set; }
         public virtual DbSet<TeTe> TeTe { get; set; }
+
+        
         public NEUContext(DbContextOptions<NEUContext> options)
             : base(options)
         {
@@ -55,7 +58,7 @@ namespace WebApplication8.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=192.168.80.143;Database=NEU;User id=sa;Password=123;Trusted_Connection=false;");
+                optionsBuilder.UseSqlServer(@"Server=192.168.20.77;Database=NEU;User id=iter;Password=SACC123NEU;Trusted_Connection=false;");
             }
         }
 

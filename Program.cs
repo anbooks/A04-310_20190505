@@ -23,3 +23,6 @@ namespace WebApplication8
                 .Build();
     }
 }
+               /*.UseKestrel()
+               .UseContentRoot(Directory.GetCurrentDirectory())
+               .UseIISIntegration()*/
