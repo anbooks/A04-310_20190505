@@ -43,7 +43,7 @@ namespace WebApplication8.Controllers
           
             //ViewBag.Teid = HttpContext.Session.GetInt32("Teid");
             //int Teid = ViewBag.Teid;
-            var test = await _context.Test.SingleOrDefaultAsync(m => m.TestId == id|| m.TestId == id);
+            var test = await _context.Test.SingleOrDefaultAsync(m => m.TestId == id);
             HttpContext.Session.SetInt32("Teid", test.TestId);
            
             //int Teid = ViewBag.Teid;
