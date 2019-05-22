@@ -37,9 +37,9 @@
             <div class="breadcrumbs ace-save-state" id="breadcrumbs">
                 <ul class="breadcrumb">
                     @*<li>
-                        <i class="ace-icon fa fa-home home-icon"></i>
-                        <a asp-area="" class="nav-link" asp-controller="DbEms" asp-action="Start">返回模拟答题首页</a>
-                    </li>*@
+                            <i class="ace-icon fa fa-home home-icon"></i>
+                            <a asp-area="" class="nav-link" asp-controller="DbEms" asp-action="Start">返回模拟答题首页</a>
+                        </li>*@
 
 
 
@@ -55,6 +55,9 @@
     <!-- typography -->
     <section>
         <div>
+            <a asp-controller="DbPaxes" asp-action="Delete">返回</a>
+        </div>
+        <div>
             <div class="row inner_w3l_agile_grids-1 ">
                 <!-- section title -->
                 <!-- //section title -->
@@ -68,17 +71,45 @@
                                     @Html.DisplayFor(modelItem => item.Pax1_ID) .
                                     @Html.DisplayFor(modelItem => item.Question) ( )
                                 </li>
+                                @if (item.Type.Equals("判断"))
+                                {
+                                    <li class="list-group-item" style="width:800px">@Html.DisplayFor(modelItem => item.OptionA)</li>
+                                    <li class="list-group-item" style="width:800px">@Html.DisplayFor(modelItem => item.OptionB)</li>
+                                    if (item.RightAnswer == "A")
+                                    {
+                                        <li class="list-group-item" style="width:800px;color:red">
 
-                                <li class="list-group-item" style="width:800px">A. @Html.DisplayFor(modelItem => item.OptionA)</li>
-                                <li class="list-group-item" style="width:800px">B. @Html.DisplayFor(modelItem => item.OptionB)</li>
-                                <li class="list-group-item" style="width:800px">C. @Html.DisplayFor(modelItem => item.OptionC)</li>
-                                <li class="list-group-item" style="width:800px">D. @Html.DisplayFor(modelItem => item.OptionD) </li>
-                                <li class="list-group-item" style="width:800px;color:red">
+                                            正确答案： 是
+                                            您的答案： 否
 
-                                    正确答案： @Html.DisplayFor(modelItem => item.RightAnswer)
-                                    您的答案： @Html.DisplayFor(modelItem => item.EmAnswer)
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li class="list-group-item" style="width:800px;color:red">
 
-                                </li>
+                                            正确答案： 否
+                                            您的答案： 是
+
+                                        </li>
+
+                                    }
+
+                                }
+                                else
+                                {
+                                    <li class="list-group-item" style="width:800px">A. @Html.DisplayFor(modelItem => item.OptionA)</li>
+                                    <li class="list-group-item" style="width:800px">B. @Html.DisplayFor(modelItem => item.OptionB)</li>
+                                    <li class="list-group-item" style="width:800px">C. @Html.DisplayFor(modelItem => item.OptionC)</li>
+                                    <li class="list-group-item" style="width:800px">D. @Html.DisplayFor(modelItem => item.OptionD) </li>
+                                    <li class="list-group-item" style="width:800px;color:red">
+
+                                        正确答案： @Html.DisplayFor(modelItem => item.RightAnswer)
+                                        您的答案： @Html.DisplayFor(modelItem => item.EmAnswer)
+
+                                    </li>
+                                }
+
                             </ul>}
                     </div>
                 </div>
