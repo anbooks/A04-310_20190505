@@ -15,7 +15,7 @@ namespace WebApplication8.Controllers
     public class DbPaxesController : Controller
     {
         private readonly NEUContext _context;
-        private int tureOrFalseNum = 10;//判断题数量
+
         private int singleCho = 20;//单选题数量
         private int multipleCho = 10;//多选题数量
         private static DateTime testStart;
@@ -108,80 +108,11 @@ namespace WebApplication8.Controllers
             int j = 1;
 
             var single_Choice = from d in qu where (d.Type.Equals("单选")) select d;
-            //int m = single_Choice.Count();
+            int m = single_Choice.Count();
             var multiple_Choice = from d in qu where (d.Type.Equals("多选")) select d;
-            var trueOrFalse = from d in qu where (d.Type.Equals("判断")) select d;
 
             List<int> keys = new List<int>();
             List<int> value = new List<int>();
-
-
-            var hardT = from d in trueOrFalse where (d.Difficulty.Equals("难")) select d;
-            for (int i = 0; i < tureOrFalseNum * 0.2;)
-            {
-
-
-                DbPax dbPax = new DbPax();
-                Random s = new Random();
-                var cc = hardT.ToList();
-                int b = s.Next(0, hardT.Count());
-                if (!QuestionExists(cc[b].QuId, value))//试卷中不存在新抽取的题，将其加入试卷
-                {
-                    j++;
-
-                    pax_list.Add(j - 1, cc[b].QuId);
-                    keys.Add(j - 1);
-                    value.Add(cc[b].QuId);
-
-                    ++i;
-                }
-
-            }
-
-            var mediumT = from d in trueOrFalse where (d.Difficulty.Equals("中")) select d;
-            for (int i = 0; i < tureOrFalseNum * 0.5;)
-            {
-                DbExam dbExam = new DbExam();
-                DbPax dbPax = new DbPax();
-
-                Random s = new Random();
-                var cc = mediumT.ToList();
-
-                int b = s.Next(0, mediumT.Count());
-                if (!QuestionExists(cc[b].QuId, value))
-                {
-
-                    j++;
-                    pax_list.Add(j - 1, cc[b].QuId);
-                    keys.Add(j - 1);
-                    value.Add(cc[b].QuId);
-
-                    ++i;
-                }
-
-            }
-
-            var simpleT = from d in trueOrFalse where (d.Difficulty.Equals("易")) select d;
-            for (int i = 0; i < tureOrFalseNum * 0.3;)
-            {
-
-                DbExam dbExam = new DbExam();
-
-                Random s = new Random();
-                var cc = simpleT.ToList();
-                DbPax dbPax = new DbPax();
-                int b = s.Next(0, simpleT.Count());
-                if (!QuestionExists(cc[b].QuId, value))
-                {
-                    j++;
-
-                    pax_list.Add(j - 1, cc[b].QuId);
-                    keys.Add(j - 1);
-                    value.Add(cc[b].QuId);
-
-                    ++i;
-                }
-            }
 
             var hardS = from d in single_Choice where (d.Difficulty.Equals("难")) select d;
             for (int i = 0; i < singleCho * 0.2;)
@@ -524,7 +455,7 @@ namespace WebApplication8.Controllers
             }
             else
             {
-                if (dbPax.Pax1_ID < 40)
+                if (dbPax.Pax1_ID < 30)
                 {
                     if (ans_list.TryGetValue(id, out string value))
                     {
@@ -539,7 +470,7 @@ namespace WebApplication8.Controllers
 
                     return RedirectToRoute(new { Controller = "DbPaxes", Action = "Edit", id });
                 }
-                else if (dbPax.Pax1_ID == 40)
+                else if (dbPax.Pax1_ID == 30)
                 {
                     if (ans_list.TryGetValue(id, out string value))
                     {
@@ -605,7 +536,7 @@ namespace WebApplication8.Controllers
             }
             else
             {
-                if (id <= 40)
+                if (id <= 30)
                 {
                     if (paperQu.Type.Equals("多选"))
                     {
@@ -713,7 +644,7 @@ namespace WebApplication8.Controllers
             }
             else
             {
-                if (dbPax.Pax1_ID <= 40)
+                if (dbPax.Pax1_ID <= 30)
                 {
                     if (ans_list.TryGetValue(id, out string value))
                     {
@@ -748,7 +679,7 @@ namespace WebApplication8.Controllers
             ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
             var paper = from d in _context.DbPax where (d.PaId == paId) select d;
             var dbpax = await paper.ToListAsync();
-            int countT=0, countS = 0, countN = 0;
+            int countS = 0, countN = 0;
             foreach (var item in dbpax)
             {
                 DbQu dbqu = await _context.DbQu.SingleOrDefaultAsync(d => d.QuId == item.QuId);
@@ -766,22 +697,7 @@ namespace WebApplication8.Controllers
                 }
                 DbExam dbexam = await _context.DbExam.SingleOrDefaultAsync(m => (m.PaId == paId) && (m.Pax1_ID == item.Pax1_ID));
 
-                if (dbqu.Type.Equals("判断"))
-                {
-                    if (dbqu.RightAnswer.Equals(dbte.EmAnswer))
-                    {
-
-                        dbte.RW = "对";
-                        dbexam.RW = "对";
-                        ++countT;
-                    }
-                    else
-                    {
-                        dbte.RW = "错";
-                        dbexam.RW = "错";
-                    }
-                }
-                else if (dbqu.Type.Equals("单选"))
+                if (dbqu.Type.Equals("单选"))
                 {
                     if (dbqu.RightAnswer.Equals(dbte.EmAnswer))
                     {
@@ -796,7 +712,7 @@ namespace WebApplication8.Controllers
                         dbexam.RW = "错";
                     }
                 }
-                else 
+                else
                 {
                     if ((dbqu.RightAnswer).Equals(dbte.EmAnswer))
                     {
@@ -811,7 +727,7 @@ namespace WebApplication8.Controllers
                     }
                 }
             }
-            int score = (countS + countN * 2+countT)*2;
+            int score = countS + countN * 3;
             ViewBag.htmlStr = score.ToString();
             int useId = ViewBag.UserId;
             var employee = await _context.DbEm.SingleOrDefaultAsync(m => m.EmId == useId);
@@ -823,7 +739,7 @@ namespace WebApplication8.Controllers
             sco.TestStart = testStart;
             sco.TestEnd = testEnd;
             sco.PaId = paId;
-            sco.Correct = countN + countS+countT;
+            sco.Correct = countN + countS;
             _context.Add(sco);
             await _context.SaveChangesAsync();
 

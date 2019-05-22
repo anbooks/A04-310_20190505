@@ -66,83 +66,46 @@
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PaxId" />
-            @if (Model.Qu.Type.Equals("判断"))
-            {
-                <table>
-                    <tr>
+            <table>
+                <tr>
 
-                        <td width="80px" valign="top">（判断）@Html.DisplayFor(modelItem => Model.Pax1_ID) .</td>
-                        <td>@Html.DisplayFor(modelItem => modelItem.Qu.Question)</td>
-                    </tr>
-                    @{
-                        if (answer == null)
-                        {
-                            <tr>
+                    <td width="80px" valign="top">（单选）@Html.DisplayFor(modelItem => Model.Pax1_ID) .</td>
+                    <td>@Html.DisplayFor(modelItem => modelItem.Qu.Question)</td>
+                </tr>
+                
+                @{
+                    if (answer == null)
+                    {
+                        <tr>
 
-                                <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
-                                <td>@Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
-                            </tr>
-                            <tr>
+                            <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
+                            <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
+                        </tr>
+                        <tr>
 
-                                <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" /></td>
-                                <td>@Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
-                            </tr>
+                            <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" /></td>
+                            <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
+                        </tr>
+                        <tr>
 
-                        }
-                        else
-                        {
-                            if (answer == "A")
-                            {
-                                <tr>
+                            <td style="text-align:center"><input type="radio" id="ra_3" Name="Option" value="C" /></td>
+                            <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
+                        </tr>
+                        <tr>
 
-                                    <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" checked="checked" /></td>
-                                    <td>@Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" /></td>
-                                    <td>@Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
-                                </tr>
-
-                            }
-                            if (answer == "B")
-                            {
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
-                                    <td>@Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" checked="checked" /></td>
-                                    <td>@Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
-                                </tr>
-
-                            }
+                            <td style="text-align:center"><input type="radio" id="ra_4" Name="Option" value="D" /></td>
+                            <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
+                        </tr>
 
 
-
-                        }
                     }
-
-                </table>
-
-
-            }
-            else
-            {
-                <table>
-                    <tr>
-
-                        <td width="80px" valign="top">（单选）@Html.DisplayFor(modelItem => Model.Pax1_ID) .</td>
-                        <td>@Html.DisplayFor(modelItem => modelItem.Qu.Question)</td>
-                    </tr>
-
-                    @{if (answer == null)
+                    else
+                    {
+                        if (answer == "A")
                         {
                             <tr>
 
-                                <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
+                                <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" checked="checked" /></td>
                                 <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
                             </tr>
                             <tr>
@@ -161,117 +124,84 @@
                                 <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
                             </tr>
 
-
                         }
-                        else
+                        if (answer == "B")
                         {
-                            if (answer == "A")
-                            {
-                                <tr>
+                            <tr>
 
-                                    <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" checked="checked" /></td>
-                                    <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
-                                </tr>
-                                <tr>
+                                <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
+                                <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
+                            </tr>
+                            <tr>
 
-                                    <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" /></td>
-                                    <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
-                                </tr>
-                                <tr>
+                                <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" checked="checked" /></td>
+                                <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
+                            </tr>
+                            <tr>
 
-                                    <td style="text-align:center"><input type="radio" id="ra_3" Name="Option" value="C" /></td>
-                                    <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
-                                </tr>
-                                <tr>
+                                <td style="text-align:center"><input type="radio" id="ra_3" Name="Option" value="C" /></td>
+                                <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
+                            </tr>
+                            <tr>
 
-                                    <td style="text-align:center"><input type="radio" id="ra_4" Name="Option" value="D" /></td>
-                                    <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
-                                </tr>
-
-                            }
-                            if (answer == "B")
-                            {
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
-                                    <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" checked="checked" /></td>
-                                    <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_3" Name="Option" value="C" /></td>
-                                    <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_4" Name="Option" value="D" /></td>
-                                    <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
-                                </tr>
-
-                            }
-                            if (answer == "C")
-                            {
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
-                                    <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" /></td>
-                                    <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_3" Name="Option" value="C" checked="checked" /></td>
-                                    <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_4" Name="Option" value="D" /></td>
-                                    <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
-                                </tr>
-
-                            }
-                            if (answer == "D")
-                            {
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
-                                    <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" /></td>
-                                    <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_3" Name="Option" value="C" /></td>
-                                    <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
-                                </tr>
-                                <tr>
-
-                                    <td style="text-align:center"><input type="radio" id="ra_4" Name="Option" value="D" checked="checked" /></td>
-                                    <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
-                                </tr>
-
-                            }
+                                <td style="text-align:center"><input type="radio" id="ra_4" Name="Option" value="D" /></td>
+                                <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
+                            </tr>
 
                         }
+                        if (answer == "C")
+                        {
+                            <tr>
+
+                                <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
+                                <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
+                            </tr>
+                            <tr>
+
+                                <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" /></td>
+                                <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
+                            </tr>
+                            <tr>
+
+                                <td style="text-align:center"><input type="radio" id="ra_3" Name="Option" value="C" checked="checked" /></td>
+                                <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
+                            </tr>
+                            <tr>
+
+                                <td style="text-align:center"><input type="radio" id="ra_4" Name="Option" value="D" /></td>
+                                <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
+                            </tr>
+
+                        }
+                        if (answer == "D")
+                        {
+                            <tr>
+
+                                <td style="text-align:center"><input type="radio" id="ra_1" Name="Option" value="A" /></td>
+                                <td>A. @Html.DisplayFor(modelItem => Model.Qu.OptionA)</td>
+                            </tr>
+                            <tr>
+
+                                <td style="text-align:center"><input type="radio" id="ra_2" Name="Option" value="B" /></td>
+                                <td>B. @Html.DisplayFor(modelItem => Model.Qu.OptionB)</td>
+                            </tr>
+                            <tr>
+
+                                <td style="text-align:center"><input type="radio" id="ra_3" Name="Option" value="C" /></td>
+                                <td>C. @Html.DisplayFor(modelItem => Model.Qu.OptionC)</td>
+                            </tr>
+                            <tr>
+
+                                <td style="text-align:center"><input type="radio" id="ra_4" Name="Option" value="D" checked="checked" /></td>
+                                <td>D. @Html.DisplayFor(modelItem => Model.Qu.OptionD)</td>
+                            </tr>
+
+                        }
+
                     }
+                }
 
-                </table>
-
-            }
-
-
-
-
+            </table>
             <div class="form-group">
                 <input type="submit" value="上一题" class="btn btn-default" name="edit" />
                 <input type="submit" value="下一题" class="btn btn-default" name="edit" />
