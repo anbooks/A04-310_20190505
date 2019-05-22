@@ -66,13 +66,31 @@
                             <table class="list-group">
                                 <tr>
                                     <td class="list-group-item" style="width:800px;background-color:aliceblue;color:black"> @Html.DisplayFor(modelItem => item.Pax.Pax1_ID) (@Html.DisplayFor(modelItem => item.Pax.Qu.Type))@Html.DisplayFor(modelItem => item.Pax.Qu.Question)</td>
+
+
                                     @if (item.Answer == null)
                                     {
                                         <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" asp-route-id="@item.Pax.Pax1_ID">答题</a></td>
                                     }
                                     else
                                     {
-                                        <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" style="color:red" asp-route-id="@item.Pax.Pax1_ID">@Html.DisplayFor(modelItem => item.Answer)</a></td>
+                                        if (item.Pax.Qu.Type.Equals("判断"))
+                                        {
+                                            if (item.Answer == "A")
+                                            {
+                                                <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" style="color:red" asp-route-id="@item.Pax.Pax1_ID">是</a></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" style="color:red" asp-route-id="@item.Pax.Pax1_ID">否</a></td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" style="color:red" asp-route-id="@item.Pax.Pax1_ID"> @Html.DisplayFor(modelItem => item.Answer)</a></td>
+                                        }
+
+
                                     }
                                 </tr>
                             </table>
