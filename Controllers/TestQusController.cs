@@ -20,7 +20,7 @@ namespace WebApplication8.Controllers
         }
 
         // GET: TestQus   .SingleOrDefaultAsync(m=>m.TestId==id)
-        public async Task<IActionResult> Index(int?id)
+        public async Task<IActionResult> Index(int? id)
         {
             ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
             DbEm dbem = new DbEm();
@@ -32,7 +32,18 @@ namespace WebApplication8.Controllers
                 return Redirect("~/Login/Create");
             }
             // int Teid = id; 
-            var test = await _context.Test.SingleOrDefaultAsync(m => m.TestId == id);
+            
+            if (id == null)
+            {
+                ViewBag.Teid = HttpContext.Session.GetInt32("Teid");
+                int Teid = ViewBag.Teid;
+                id = Teid;
+
+            }
+          
+            //ViewBag.Teid = HttpContext.Session.GetInt32("Teid");
+            //int Teid = ViewBag.Teid;
+            var test = await _context.Test.SingleOrDefaultAsync(m => m.TestId == id|| m.TestId == id);
             HttpContext.Session.SetInt32("Teid", test.TestId);
            
             //int Teid = ViewBag.Teid;
