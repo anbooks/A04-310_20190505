@@ -68,7 +68,7 @@ namespace WebApplication8.Controllers
             {
                 if (counta >= testa.Dan)
                 {
-                    return RedirectToAction("Index", "TestQus");
+                    return RedirectToAction("Index", "TestQus",Teid);
                 }
                 TestQu testQu = new TestQu();
                 testQu.QuId = id;

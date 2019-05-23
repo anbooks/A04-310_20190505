@@ -1,18 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using WebApplication8.Models;
+using HighchartsNETCore;
 
-namespace WebApplication8.Controllers
+namespace HighchartsNETCoreWeb.Controllers
 {
     public class HomeController : Controller
     {
         public IActionResult Index()
         {
+            ChartsSeries series = new ChartsSeries();
+            Dictionary<object, object> dic = new Dictionary<object, object>();
+            Random r = new Random();
+            for (int i = 0; i < 12; i++)
+            {
+                dic.Add(DateTime.Now.AddDays(i).ToString("yyyyMMdd"), r.Next(20));
+            }
+            series.SeriesName = "温度";
+            series.SeriesData = dic;
+            ViewBag.Series = series;
             return View();
         }
 
@@ -29,10 +37,10 @@ namespace WebApplication8.Controllers
 
             return View();
         }
-       
+
         public IActionResult Error()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
     }
 }

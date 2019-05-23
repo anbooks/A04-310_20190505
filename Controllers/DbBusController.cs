@@ -77,7 +77,7 @@ namespace WebApplication8.Controllers
             //var PoName = from d in _context.DbPo where (d.PoId == dbem.EmId) select d;
             if (!dbem.PoId.Equals(1))
             {
-                return Redirect("~/Login/Create");
+                //return Redirect("~/DbEms/Create");
             }
             return View();
         }

@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2036
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApplication8", "WebApplication8.csproj", "{916A397C-39CF-4523-9A9E-9BDAD5BA313E}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HighchartsNETCore", "..\HighchartsNETCore\HighchartsNETCore.csproj", "{3AC57A50-C64A-4CAE-97ED-5FD401F8B653}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{916A397C-39CF-4523-9A9E-9BDAD5BA313E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{916A397C-39CF-4523-9A9E-9BDAD5BA313E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{916A397C-39CF-4523-9A9E-9BDAD5BA313E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC57A50-C64A-4CAE-97ED-5FD401F8B653}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC57A50-C64A-4CAE-97ED-5FD401F8B653}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC57A50-C64A-4CAE-97ED-5FD401F8B653}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC57A50-C64A-4CAE-97ED-5FD401F8B653}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -22,5 +28,4 @@ Global
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E682D33B-ADBB-46F4-9E46-2653150923A9}
 	EndGlobalSection
-	
 EndGlobal
