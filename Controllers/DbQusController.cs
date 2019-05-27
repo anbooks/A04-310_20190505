@@ -61,8 +61,13 @@ namespace WebApplication8.Controllers
                         dbQu.Question = worksheet.Cells[row, 3].Value.ToString();
                         dbQu.OptionA = worksheet.Cells[row, 4].Value.ToString();
                         dbQu.OptionB = worksheet.Cells[row, 5].Value.ToString();
+                        if (dbQu.Type!="判断")
+                       {
                         dbQu.OptionC = worksheet.Cells[row, 6].Value.ToString();
                         dbQu.OptionD = worksheet.Cells[row, 7].Value.ToString();
+                         }
+                        dbQu.OptionC = " ";
+                        dbQu.OptionD = " ";
                         dbQu.RightAnswer = worksheet.Cells[row, 8].Value.ToString();
                         dbQu.Difficulty = worksheet.Cells[row, 9].Value.ToString();
                         var bbb = await _context.DbSu1.SingleOrDefaultAsync(m => m.SuaName == worksheet.Cells[row, 10].Value.ToString());
@@ -71,8 +76,9 @@ namespace WebApplication8.Controllers
                         dbQu.SubId = ccc.SubId;
                         var ddd = await _context.DbSu3.SingleOrDefaultAsync(m => m.SucName == worksheet.Cells[row, 12].Value.ToString());
                         dbQu.SucId = ddd.SucId;
-                        var eee = await _context.DbEm.SingleOrDefaultAsync(m => m.EmName == worksheet.Cells[row, 13].Value.ToString());
-                        dbQu.EmId = eee.EmId;
+
+                    ViewBag.UserId = HttpContext.Session.GetInt32("UserId");                   
+                    dbQu.EmId = ViewBag.UserId;;
                         _context.Add(dbQu);
                         await _context.SaveChangesAsync();
                     }
