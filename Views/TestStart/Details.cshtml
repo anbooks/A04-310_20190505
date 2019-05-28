@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<WebApplication8.Models.QuestionTeans>
-@{ 
-Layout = null;
+@{
+    Layout = null;
 }
 
 <html lang="zxx">
@@ -36,7 +36,7 @@ Layout = null;
                 <ul class="breadcrumb">
                     <li>
                         <i class="ace-icon fa fa-home home-icon"></i>
-                        <a asp-area="" class="nav-link" asp-controller="TestGo" asp-action="Index">返回选择开始考试页面</a>
+                        <a asp-area="" class="nav-link" asp-controller="DbEms" asp-action="Start">退出答题</a>
                     </li>
 
 
@@ -61,17 +61,35 @@ Layout = null;
                         <h5 class="pt-4 pb-3"></h5>
                         @foreach (var item in Model)
                         {
-                            <input type="hidden" id="Id" value="item.Pax1_ID" />
+                            <input type="hidden" id="Id" value="item.TestaId" />
                             <table class="list-group">
                                 <tr>
-                                    <td class="list-group-item" style="width:800px;background-color:aliceblue;color:black">  @Html.DisplayFor(modelItem => item.Pax.TestaId) (@Html.DisplayFor(modelItem => item.Pax.Qu.Type))@Html.DisplayFor(modelItem => item.Pax.Qu.Question)</td>
+                                    <td class="list-group-item" style="width:800px;background-color:aliceblue;color:black"> @Html.DisplayFor(modelItem => item.Pax.TestaId) (@Html.DisplayFor(modelItem => item.Pax.Qu.Type))@Html.DisplayFor(modelItem => item.Pax.Qu.Question)</td>
+
+
                                     @if (item.Answer == null)
                                     {
                                         <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" asp-route-id="@item.Pax.TestaId">答题</a></td>
                                     }
                                     else
                                     {
-                                        <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" style="color:red" asp-route-id="@item.Pax.TestaId">@Html.DisplayFor(modelItem => item.Answer)</a></td>
+                                        if (item.Pax.Qu.Type.Equals("判断"))
+                                        {
+                                            if (item.Answer == "A")
+                                            {
+                                                <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" style="color:red" asp-route-id="@item.Pax.TestaId">是</a></td>
+                                            }
+                                            else
+                                            {
+                                                <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" style="color:red" asp-route-id="@item.Pax.TestaId">否</a></td>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <td class="list-group-item" style="width:800px" id="an"><a asp-action="Edit" style="color:red" asp-route-id="@item.Pax.TestaId"> @Html.DisplayFor(modelItem => item.Answer)</a></td>
+                                        }
+
+
                                     }
                                 </tr>
                             </table>

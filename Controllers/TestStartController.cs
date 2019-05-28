@@ -60,7 +60,7 @@ namespace WebApplication8.Controllers
             int sal = sel.Count();
 
             var num = await _context.Test.SingleOrDefaultAsync(m => (m.TestId == id));
-            if (!sal.Equals(0))
+            if (sal!=0)
             {
                 return RedirectToAction("Index", "TestGo");
             }
@@ -72,6 +72,7 @@ namespace WebApplication8.Controllers
             var single_Choice = from d in qu where (d.Qu.Type.Equals("单选")) select d;
             // int m = single_Choice.Count();
             var multiple_Choice = from d in qu where (d.Qu.Type.Equals("多选")) select d;
+            var tureOrFalse_Choice = from d in qu where (d.Qu.Type.Equals("判断")) select d;
             List<int> keys = new List<int>();
             List<int> value = new List<int>();
             var hardS = from d in single_Choice select d;
@@ -98,6 +99,25 @@ namespace WebApplication8.Controllers
                 var cc = hardM.ToList();
 
                 int b = s.Next(0, hardM.Count());
+                if (!QuestionExists(cc[b].Qu.QuId, value))
+                {
+                    j++;
+
+                    pax_list.Add(j, cc[b].Qu.QuId);
+                    keys.Add(j);
+                    value.Add(cc[b].Qu.QuId);
+
+                    ++i;
+                }
+            }
+            var hardT = from d in tureOrFalse_Choice select d;
+            for (int i = 0; i < num.Pan;)
+            {
+                TestAn dbPax = new TestAn();
+                Random s = new Random();
+                var cc = hardT.ToList();
+
+                int b = s.Next(0, hardT.Count());
                 if (!QuestionExists(cc[b].Qu.QuId, value))
                 {
                     j++;
@@ -212,7 +232,7 @@ namespace WebApplication8.Controllers
             dbPax = await _context.TestAn.SingleOrDefaultAsync(m => (m.TestId == paperId) && (m.TestaId == id) && (m.EmId == Eid));
             string stores = Request.Form["checkBox"];
             var num = await _context.Test.SingleOrDefaultAsync(m => (m.TestId == paperId));
-            int cou = num.Dan + num.Duo;
+            int cou = Convert.ToInt32(num.Dan + num.Duo+num.Pan);
             ViewBag.htmlStr = cou.ToString();
             if (stores == null)
             {
@@ -435,7 +455,7 @@ namespace WebApplication8.Controllers
             int uid = ViewBag.UserId;
             var paper = from d in _context.TestAn where (d.TestId == paId) select d;
             var dbpax = await paper.ToListAsync();
-            int countS = 0, countN = 0;
+            int countS = 0, countN = 0,countP = 0;
             foreach (var item in dbpax)
             {
                 TestAn dbexam = await _context.TestAn.Include(m => m.Qu).SingleOrDefaultAsync(m => (m.TestId == paId) && (m.TestaId == item.TestaId) && (m.EmId == uid));
@@ -452,12 +472,24 @@ namespace WebApplication8.Controllers
                         dbexam.RW = "错";
                     }
                 }
+                if (dbexam.Qu.Type.Equals("多选"))
+                {
+                    if (dbexam.Qu.RightAnswer.Equals(dbexam.TeAn))
+                    {
+                        dbexam.RW = "对";
+                        ++countS;
+                    }
+                    else
+                    {
+                        dbexam.RW = "错";
+                    }
+                }
                 else
                 {
                     if ((dbexam.Qu.RightAnswer).Equals(dbexam.TeAn))
                     {
                         dbexam.RW = "对";
-                        ++countN;
+                        ++countP;
                     }
                     else
                     {
@@ -466,9 +498,10 @@ namespace WebApplication8.Controllers
                 }
             }
             var sc = await _context.Test.SingleOrDefaultAsync(m => m.TestId == paId);
-            int dan = sc.Dan;
-            int duo = sc.Duo;
-            float score = (float)(countS + countN * 3) / (dan + duo * 3) * 100;
+            int dan = Convert.ToInt32(sc.DanScore);
+            int duo = Convert.ToInt32(sc.DuoScore);
+            int pan = Convert.ToInt32(sc.PanScore);
+            float score = countS * duo + countN * dan+countP*pan;
             ViewBag.htmlStr = score.ToString();
             int useId = ViewBag.UserId;
             var employee = await _context.DbEm.SingleOrDefaultAsync(m => m.EmId == useId);

@@ -12,7 +12,7 @@ namespace WebApplication8.Models
 
         public int TequId { get; set; }
         public int? TestId { get; set; }
-        public int? QuId { get; set; }
+        public int QuId { get; set; }
         public int? TestaId { get; set; }
 
         public DbQu Qu { get; set; }

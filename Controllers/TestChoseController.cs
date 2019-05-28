@@ -62,8 +62,10 @@ namespace WebApplication8.Controllers
             var testb = await _context.DbQu.SingleOrDefaultAsync(d => d.QuId == id);
             var test1 = from d in _context.TestQu where (d.TestId == Teid&&d.Qu.Type==("单选")) select d;
             var test2 = from d in _context.TestQu where (d.TestId == Teid && d.Qu.Type == ("多选")) select d;
+            var test3 = from d in _context.TestQu where (d.TestId == Teid && d.Qu.Type == ("判断")) select d;
             int counta = test1.Count();
             int countb = test2.Count();
+            int countc = test3.Count();
             if (testb.Type == "单选")
             {
                 if (counta >= testa.Dan)
@@ -71,7 +73,7 @@ namespace WebApplication8.Controllers
                     return RedirectToAction("Index", "TestQus",Teid);
                 }
                 TestQu testQu = new TestQu();
-                testQu.QuId = id;
+                testQu.QuId = Convert.ToInt32(id);
                 testQu.TestId = Teid;
                 await _context.AddAsync(testQu);
                 await _context.SaveChangesAsync();
@@ -83,7 +85,19 @@ namespace WebApplication8.Controllers
                     return RedirectToAction("Index", "TestQus");
                 }
                 TestQu testQu = new TestQu();
-                testQu.QuId = id;
+                testQu.QuId = Convert.ToInt32(id);
+                testQu.TestId = Teid;
+                await _context.AddAsync(testQu);
+                await _context.SaveChangesAsync();
+            }
+            if (testb.Type == "判断")
+            {
+                if (countc >= testa.Pan)
+                {
+                    return RedirectToAction("Index", "TestQus");
+                }
+                TestQu testQu = new TestQu();
+                testQu.QuId = Convert.ToInt32(id);
                 testQu.TestId = Teid;
                 await _context.AddAsync(testQu);
                 await _context.SaveChangesAsync();

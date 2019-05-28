@@ -62,7 +62,7 @@ namespace WebApplication8.Controllers
                         dbQu.OptionA = worksheet.Cells[row, 4].Value.ToString();
                         dbQu.OptionB = worksheet.Cells[row, 5].Value.ToString();
                         if (dbQu.Type!="判断")
-                       {
+                        {
                         dbQu.OptionC = worksheet.Cells[row, 6].Value.ToString();
                         dbQu.OptionD = worksheet.Cells[row, 7].Value.ToString();
                          }
