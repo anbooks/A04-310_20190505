@@ -61,7 +61,7 @@
                     <input type="hidden" asp-for="TeAnId" />
                     <div class="slider-info">
                         <h3>考试成绩为: <span>@Html.Raw(ViewBag.htmlStr)  </span> 分</h3>
-                        <a class="banner-button btn mt-md-5 mt-4" asp-controller="TestAns" asp-action="Index">错题信息</a>
+                        <a class="banner-button btn mt-md-5 mt-4" asp-controller="TestAns" asp-action="Index"asp-route-id="@ViewBag.PaId">错题信息</a>
                     </div>
                 </form>
             </div>

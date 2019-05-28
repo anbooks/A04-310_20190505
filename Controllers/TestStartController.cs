@@ -452,6 +452,7 @@ namespace WebApplication8.Controllers
         {
             var paId = HttpContext.Session.GetInt32("paperId");
             ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
+            ViewBag.PaId = paId;
             int uid = ViewBag.UserId;
             var paper = from d in _context.TestAn where (d.TestId == paId) select d;
             var dbpax = await paper.ToListAsync();
