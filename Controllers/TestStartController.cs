@@ -515,7 +515,7 @@ namespace WebApplication8.Controllers
             sco.TestStart = testStart;
             sco.TestEnd = testEnd;
             sco.PaId = paId;
-            sco.Correct = countN + countS;
+            sco.Correct = countN + countS+countP;
             _context.Add(sco);
             await _context.SaveChangesAsync();
 
