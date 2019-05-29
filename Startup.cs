@@ -46,7 +46,7 @@ namespace WebApplication8
                 options.Cookie.HttpOnly = true;
             });
             services.AddMvc();
-            var connection = @"Server=192.168.20.77;Database=NEU;Trusted_Connection=false;User Id=iter;Password=SACC123NEU;ConnectRetryCount=0";
+            var connection = @"Server=192.168.44.130;Database=NEU;Trusted_Connection=false;User Id=sa;Password=123;ConnectRetryCount=0";
             services.AddDbContext<NEUContext>(options => options.UseSqlServer(connection, b => b.UseRowNumberForPaging()));
         }
 
