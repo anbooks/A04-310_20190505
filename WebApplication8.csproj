@@ -89,6 +89,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\.vs\moban3247\v15\" />
+    <Folder Include="wwwroot\模板\database\" />
     <Folder Include="wwwroot\用户导入模板\" />
   </ItemGroup>
 
