@@ -75,6 +75,25 @@ namespace WebApplication8.Controllers
             var tureOrFalse_Choice = from d in qu where (d.Qu.Type.Equals("判断")) select d;
             List<int> keys = new List<int>();
             List<int> value = new List<int>();
+            var hardT = from d in tureOrFalse_Choice select d;
+            for (int i = 0; i < num.Pan;)
+            {
+                TestAn dbPax = new TestAn();
+                Random s = new Random();
+                var cc = hardT.ToList();
+
+                int b = s.Next(0, hardT.Count());
+                if (!QuestionExists(cc[b].Qu.QuId, value))
+                {
+                    j++;
+
+                    pax_list.Add(j, cc[b].Qu.QuId);
+                    keys.Add(j);
+                    value.Add(cc[b].Qu.QuId);
+
+                    ++i;
+                }
+            }
             var hardS = from d in single_Choice select d;
             for (int i = 0; i < num.Dan;)
             {
@@ -110,25 +129,7 @@ namespace WebApplication8.Controllers
                     ++i;
                 }
             }
-            var hardT = from d in tureOrFalse_Choice select d;
-            for (int i = 0; i < num.Pan;)
-            {
-                TestAn dbPax = new TestAn();
-                Random s = new Random();
-                var cc = hardT.ToList();
-
-                int b = s.Next(0, hardT.Count());
-                if (!QuestionExists(cc[b].Qu.QuId, value))
-                {
-                    j++;
-
-                    pax_list.Add(j, cc[b].Qu.QuId);
-                    keys.Add(j);
-                    value.Add(cc[b].Qu.QuId);
-
-                    ++i;
-                }
-            }
+          
             var selte = await _context.Test.SingleOrDefaultAsync(d => d.TestId == id);
             int PaperId = selte.TestId;
             HttpContext.Session.SetInt32("paperId", PaperId);
@@ -265,7 +266,7 @@ namespace WebApplication8.Controllers
             }
             else
             {
-                if (dbPax.TestaId < (num.Dan + num.Duo))
+                if (dbPax.TestaId <= (num.Dan + num.Duo ))
                 {
                     if (ans_list.TryGetValue(id, out string value))
                     {
@@ -280,7 +281,7 @@ namespace WebApplication8.Controllers
 
                     return RedirectToRoute(new { Controller = "TestStart", Action = "Edit", id });
                 }
-                else if (dbPax.TestaId == (num.Dan + num.Duo))
+                else if (dbPax.TestaId == (num.Dan + num.Duo+num.Pan))
                 {
                     if (ans_list.TryGetValue(id, out string value))
                     {
@@ -325,7 +326,7 @@ namespace WebApplication8.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             var paId = HttpContext.Session.GetInt32("paperId");
-
+            var num = await _context.Test.SingleOrDefaultAsync(m => (m.TestId == paId));
             ViewBag.UserId = HttpContext.Session.GetInt32("UserId");
             int uid = ViewBag.UserId;
             if (id == 0)
@@ -342,7 +343,7 @@ namespace WebApplication8.Controllers
             }
             else
             {
-                if (id <= 30)
+                if (id <=(num.Dan + num.Duo + num.Pan))
                 {
                     if (paperQu.Type.Equals("多选"))
                     {
@@ -420,7 +421,7 @@ namespace WebApplication8.Controllers
             }
             else
             {
-                if (dbPax.TestaId <= num.Dan)
+                if (dbPax.TestaId <= num.Dan+num.Pan)
                 {
                     if (ans_list.TryGetValue(id, out string value))
                     {
@@ -432,7 +433,7 @@ namespace WebApplication8.Controllers
                         ans_list.Add(id, Option);
                         ++id;
                     }
-                    if (dbPax.TestaId == num.Dan)
+                    if (dbPax.TestaId == num.Dan+num.Pan)
                     {
                         return RedirectToRoute(new { Controller = "TestStart", Action = "Create", id });
                     }
@@ -485,9 +486,9 @@ namespace WebApplication8.Controllers
                         dbexam.RW = "错";
                     }
                 }
-                else
+                if (dbexam.Qu.Type.Equals("判断"))
                 {
-                    if ((dbexam.Qu.RightAnswer).Equals(dbexam.TeAn))
+                    if (dbexam.Qu.RightAnswer.Equals(dbexam.TeAn))
                     {
                         dbexam.RW = "对";
                         ++countP;
