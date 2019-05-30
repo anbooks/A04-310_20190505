@@ -77,8 +77,8 @@ namespace WebApplication8.Controllers
                         var ddd = await _context.DbSu3.SingleOrDefaultAsync(m => m.SucName == worksheet.Cells[row, 12].Value.ToString());
                         dbQu.SucId = ddd.SucId;
 
-                    ViewBag.UserId = HttpContext.Session.GetInt32("UserId");                   
-                    dbQu.EmId = ViewBag.UserId;;
+                        ViewBag.UserId = HttpContext.Session.GetInt32("UserId");                   
+                        dbQu.EmId = ViewBag.UserId;;
                         _context.Add(dbQu);
                         await _context.SaveChangesAsync();
                     }

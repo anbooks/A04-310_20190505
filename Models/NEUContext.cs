@@ -56,7 +56,7 @@ namespace WebApplication8.Models
             if (!optionsBuilder.IsConfigured)
             {
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
-                optionsBuilder.UseSqlServer(@"Server=192.168.44.129;Database=NEU;User id=sa;Password=123;Trusted_Connection=false;");
+                optionsBuilder.UseSqlServer(@"Server=192.168.44.130;Database=NEU;User id=sa;Password=123;Trusted_Connection=false;");
             }
         }
 
@@ -389,27 +389,27 @@ namespace WebApplication8.Models
 
                 entity.Property(e => e.OptionA)
                     .IsRequired()
-                    .HasMaxLength(30)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.OptionB)
                     .IsRequired()
-                    .HasMaxLength(30)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.OptionC)
                     .IsRequired()
-                    .HasMaxLength(30)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.OptionD)
                     .IsRequired()
-                    .HasMaxLength(30)
+                    .HasMaxLength(200)
                     .IsUnicode(false);
 
                 entity.Property(e => e.Question)
                     .IsRequired()
-                    .HasMaxLength(100);
+                    .HasMaxLength(500);
 
                 entity.Property(e => e.RightAnswer)
                     .IsRequired()
