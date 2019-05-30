@@ -53,8 +53,15 @@ namespace WebApplication8.Controllers
                     int ColCount = worksheet.Dimension.Columns;
 
                     for (int row = 2; row <= rowCount; row++)
-                {                   
+                  {                   
                         DbQu dbQu = new DbQu();
+                    try
+                    {
+                        dbQu.Type = worksheet.Cells[row, 1].Value.ToString();
+                    } catch (Exception e)
+                    {
+                        return RedirectToAction("Index", "DbQus");
+                    }
                         dbQu.Type = worksheet.Cells[row,1].Value.ToString();
                         var aaa = await _context.DbBu.SingleOrDefaultAsync(m => m.BuName == worksheet.Cells[row, 2].Value.ToString());
                         dbQu.BuId = aaa.BuId;
@@ -142,8 +149,7 @@ namespace WebApplication8.Controllers
             {
                 return Redirect("~/Login/Create");
             }
-            ViewBag.string1 = HttpContext.Session.GetString("string1");
-            string string11 = ViewBag.string1;
+            
 
             IQueryable<string> diff = from m in _context.DbQu
                                             orderby m.Question
@@ -153,52 +159,21 @@ namespace WebApplication8.Controllers
                var  movies = from m in _context.DbQu.Include(d => d.Em).Include(d => d.Sua).Include(d => d.Sub).Include(d => d.Suc)
                              where (m.EmId == Eid)
                              select m;
-          
-            if ((dbem.CardId == "paper"))  
-            { 
-              movies = from m in _context.DbQu.Include(d => d.Em).Include(d => d.Sua).Include(d => d.Sub).Include(d => d.Suc)
-                         select m;
-            }
-
-            if (searchString != null)
-            {
-                HttpContext.Session.SetString("string1", searchString);
-
-            }
-            if (string11 != null)
-            {
-                searchString = string11;
+            
                 if (!String.IsNullOrEmpty(searchString))
                 {
                     movies = movies.Where(s => s.Question.Contains(searchString));
                 }
-            }
-            else
-            {
-                if (!String.IsNullOrEmpty(searchString))
-                {
-                    movies = movies.Where(s => s.Question.Contains(searchString));
-                }
-            }
+           
             var movieGenreVM = new QuesDifficultuModel();
             movieGenreVM.Difficulty = new SelectList(await diff.Distinct().ToListAsync());
-            var pageOption = new MoPagerOption
-            {
-                CurrentPage = id,
-                PageSize = 20,
-                Total = await movies.CountAsync(),
-                RouteUrl = "/DbQus/Index",
-                
-            };
-            var text = new Text
-            {      
-                po = dbem.PoId
-            };
+           
+          
 
            
-            movieGenreVM.movies = await movies.OrderByDescending(b => b.QuId).Skip((pageOption.CurrentPage - 1) * pageOption.PageSize).Take(pageOption.PageSize).ToListAsync();
+            movieGenreVM.movies = await movies.ToListAsync();
             //分页参数
-             ViewBag.PagerOption = pageOption;
+           
            // return View(movieGenreVM);
             return View(movieGenreVM);
         }
