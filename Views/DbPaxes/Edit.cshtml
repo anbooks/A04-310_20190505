@@ -1,6 +1,6 @@
 ﻿@model WebApplication8.Models.DbPax
 @{
-    Layout = "_Layout_employee";
+    Layout = "_Layout_practice";
 }
 @{
     ViewData["Title"] = "Edit";
@@ -55,6 +55,7 @@
 
 <h4></h4>
 <hr />
+
 <form asp-controller="DbPaxes" asp-action="Edit">
     <p>
         题目反馈: <input type="text" name="SearchString">
@@ -64,6 +65,7 @@
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Edit">
+            
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="PaxId" />
             @if (Model.Qu.Type.Equals("判断"))
@@ -273,8 +275,8 @@
 
 
             <div class="form-group">
-                <input type="submit" value="上一题" class="btn btn-default" name="edit" />
-                <input type="submit" value="下一题" class="btn btn-default" name="edit" />
+                <input type="submit" value="上一题" id="theLast" class="btn btn-default" name="edit" />
+                <input type="submit" value="下一题" id="theNext" class="btn btn-default" name="edit" />
             </div>
         </form>
     </div>
@@ -288,17 +290,6 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 }
 
-<script src="~/lib/jquery/dist/jquery.js" type="text/javascript"></script>
-<script type="text/javascript" language="javascript">
-    $(document).ready(function () {
-        $("#sub").click(function () {
-            alert("ffff");
-            var tt = (document).getElementById("num");
-            if (tt == '1') {
-                alert("成功");
 
-            }
-        });
-
-    });
-</script>
+        
+   

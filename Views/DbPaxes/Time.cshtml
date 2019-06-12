@@ -1,0 +1,27 @@
+﻿<script src="~/js/jquery-2.2.3.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        var now = new Date();
+        var end = new Date();
+        end.setHours(end.getHours() + 1);//结束的时间：年，月，日，分，秒（月的索引是0~11）
+        /*两个时间相减,得到的是毫秒ms,变成秒*/
+        var result = Math.floor(end - now) / 1000;
+
+        var interval = setInterval(sub, 1000); //定时器 调度对象
+        /*封装减1秒的函数*/
+        function sub() {
+            if (result > 1) {
+                result = result - 1;
+                var second = Math.floor(result % 60);     // 计算秒 ，取余
+                var minite = Math.floor((result / 60) % 60); //计算分 ，换算有多少分，取余，余出多少秒
+                var hour = Math.floor((result / 3600) % 24); //计算小时，换算有多少小时，取余，24小时制除以24，余出多少小时
+                //var day = Math.floor(result / (3600 * 24));  //计算天 ，换算有多少天
+
+                $("#remainTime").html(hour + ":" + minite + ":" + second);
+            } else {
+                alert("倒计时结束！");
+                window.clearInterval(interval);//这里可以添加倒计时结束后需要执行的事件
+            }
+        };
+    });
+</script>

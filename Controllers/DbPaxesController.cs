@@ -20,7 +20,7 @@ namespace WebApplication8.Controllers
         private int multipleCho = 10;//多选题数量
         private static DateTime testStart;
         private static DateTime testEnd;
-
+        private static int signTime;
 
 
 
@@ -584,6 +584,7 @@ namespace WebApplication8.Controllers
         // GET: DbPaxes/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+           
             var paId = HttpContext.Session.GetInt32("paperId");
             var Sign = HttpContext.Session.GetInt32("ErrorSign");
             if(Sign==1)
@@ -595,6 +596,21 @@ namespace WebApplication8.Controllers
             {
                 return NotFound();
             }
+            //if (signTime == 1)
+            //{
+            //    var hour = HttpContext.Session.GetInt32("hour");
+            //    var minutes = HttpContext.Session.GetInt32("minutes");
+            //    var second = HttpContext.Session.GetInt32("second");
+            //    ViewData["signTime"] = signTime;
+            //    ViewData["hour"] = (int)hour;
+            //    ViewData["minutes"] = (int)minutes;
+            //    ViewData["second"] = (int)second;
+
+            //}
+            //else
+            //{
+            //    ViewData["signTime"] = signTime;
+            //}
 
             DbPax pax = new DbPax();
             pax = _context.DbPax.SingleOrDefault(m => (m.PaId == paId) && (m.Pax1_ID == id));
@@ -839,6 +855,25 @@ namespace WebApplication8.Controllers
         }
 
 
+        public void Time(string text)
+        {
+           
+            if(text!=null)
+            {
+                signTime = 1;
+                var time = text.Split(":");
+                HttpContext.Session.SetString("hour", time[0]);
+                HttpContext.Session.SetString("minutes", time[1]);
+                HttpContext.Session.SetString("second", time[2]);
+            }
+            else
+            {
+                signTime = 0;
+            }
+            
+            
+        }
+        
 
 
 
